@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: [WEBSITE URL]/sitemap.xml
+Sitemap: https://lolo-fashion-house.vercel.app/sitemap.xml

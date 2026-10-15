@@ -71,6 +71,43 @@ body {
   color: var(--ink);
 }
 
+.eyebrow {
+  color: #775512;
+}
+
+.section.dark .eyebrow,
+.footer .eyebrow {
+  color: #e1bd75;
+}
+
+.section.dark .muted {
+  color: #e5e5e5;
+}
+
+.page-hero .eyebrow {
+  color: #775512 !important;
+}
+
+.gallery-label .eyebrow,
+.door-copy .eyebrow,
+.feature-copy .eyebrow {
+  color: #f0cc7c;
+}
+
+.gallery-label h3,
+.gallery-label .fine-print,
+.door-copy h2,
+.door-copy p,
+.feature-copy h2,
+.feature-copy p {
+  color: #ffffff;
+}
+
+.contact-grid > :only-child {
+  grid-column: 1 / -1;
+  max-width: 40rem;
+}
+
 .hero {
   padding: clamp(3rem, 6vw, 5rem) 0;
 }
@@ -96,9 +133,23 @@ body {
   margin: 0;
   padding: 0.4rem 0.7rem;
   border-radius: 999px;
-  background: rgb(28 27 58 / 82%);
-  color: var(--cream);
+  background: rgb(16 16 16 / 90%);
+  color: #ffffff;
   font-size: 0.72rem;
+}
+
+.hero-stamp {
+  top: 1rem;
+  bottom: auto;
+  right: 1rem;
+  z-index: 3;
+}
+
+.hero p.hero-note {
+  max-width: 28rem;
+  color: #ffffff;
+  font-size: 0.78rem;
+  line-height: 1.45;
 }
 
 .stock-note {
@@ -136,6 +187,16 @@ body {
 
   .hero-art {
     max-width: 360px;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-stamp {
+    top: 0.65rem;
+    right: auto;
+    left: 0.65rem;
+    transform: scale(0.82);
+    transform-origin: top left;
   }
 }
 
