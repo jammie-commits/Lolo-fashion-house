@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* Brand palette */
@@ -10,7 +10,7 @@
 
   --bg: var(--ivory);
   --bg-soft: var(--champagne);
-  --surface: rgba(255, 255, 255, 0.6);
+  --surface: #ffffff;
   --surface-strong: rgba(255, 255, 255, 0.8);
   --text: var(--espresso);
   --muted: rgba(57, 44, 41, 0.76);
@@ -18,12 +18,12 @@
   --gold-bright: #8a5e59;
   --gold-deep: #6f4a46;
   --line: rgba(182, 154, 114, 0.45);
-  --shadow: 0 18px 50px rgba(57, 44, 41, 0.12);
-  --radius: 26px;
-  --radius-sm: 18px;
+  --shadow: 0 2px 14px rgba(57, 44, 41, 0.07);
+  --radius: 10px;
+  --radius-sm: 6px;
   --maxw: 1200px;
   --display: 'Cormorant Garamond', serif;
-  --body: 'Inter', system-ui, sans-serif;
+  --body: 'Manrope', system-ui, sans-serif;
 }
 
 * {
@@ -36,10 +36,7 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(222, 197, 177, 0.55), transparent 38%),
-    radial-gradient(circle at 85% 15%, rgba(185, 135, 130, 0.18), transparent 32%),
-    var(--ivory);
+  background: var(--ivory);
   color: var(--text);
   font-family: var(--body);
   line-height: 1.5;

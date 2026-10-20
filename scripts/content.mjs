@@ -17,7 +17,7 @@ const data = load('content');
 
 export const gallery = load('gallery');
 export const { heroes, homeStrip, brands, collections, bridalOfferings, beforeIDo, guardianAngel, planning, digitalProducts, about, mfalme, kidsInfo } = data;
-export const tagline = heroes.home.title;
+export const tagline = 'Style Your Moments. Celebrate Your Story.';
 
 export const bridalEnquiryTypes = [
   'Before I Do Experience',

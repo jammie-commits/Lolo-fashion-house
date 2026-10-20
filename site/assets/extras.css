@@ -226,3 +226,160 @@
 .brand-name em {
   color: var(--rose);
 }
+
+/* Refined luxury system: flat, restrained, editorial */
+.glass-card,
+.product-card {
+  background: #ffffff;
+  backdrop-filter: none;
+  border: 1px solid rgba(182, 154, 114, 0.35);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.button,
+.nav-toggle,
+.pill {
+  border-radius: 999px;
+}
+
+.button {
+  box-shadow: none;
+  letter-spacing: 0.02em;
+}
+
+.button-ghost {
+  background: transparent;
+  border: 1px solid var(--espresso);
+  color: var(--espresso);
+}
+
+.button-ghost:hover {
+  background: var(--espresso);
+  color: var(--ivory);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  line-height: 1.02;
+  max-width: 18ch;
+}
+
+.page-hero-copy h1 {
+  max-width: 20ch;
+}
+
+.eyebrow {
+  color: var(--espresso);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.eyebrow a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.brand-statement {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  color: var(--gold-bright);
+  margin: 14px 0 0;
+}
+
+.footer-statement {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.25rem;
+}
+
+.section-dark {
+  background: var(--champagne);
+}
+
+.section-dark .glass-card {
+  background: #ffffff;
+}
+
+.marquee {
+  background: transparent;
+}
+
+.hero-photo {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.card-img,
+.gallery-item,
+.gallery-item img {
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+
+.intl-grid {
+  align-items: center;
+}
+
+.article {
+  max-width: 760px;
+}
+
+.article h2 {
+  margin-top: 34px;
+  font-size: 1.9rem;
+}
+
+.article p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.collection-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  background: var(--espresso);
+  color: var(--ivory);
+  padding: 10px 16px;
+  border-radius: 6px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 8px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
