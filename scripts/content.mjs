@@ -16,7 +16,7 @@ export const brands = [
     id: 'fashion',
     href: '/#collections',
     name: 'LoLo Fashion House',
-    img: 'traditional',
+    img: '01',
     kicker: 'Custom occasion wear',
     copy:
       'Outfits designed around your occasion, measurements, and personal style. From elegant traditional wedding gowns and red-carpet looks to birthday and graduation outfits, every piece is made to feel uniquely yours.',
@@ -25,7 +25,7 @@ export const brands = [
     id: 'mfalme',
     href: '/mfalme.html',
     name: 'Mfalme by LoLo',
-    img: 'groom',
+    img: '33',
     kicker: 'Menswear',
     copy:
       'Style, confidence, and distinction, tailored for the modern gentleman. Custom-made suits and African traditional outfits that combine refined tailoring with individual expression, for weddings, formal occasions and cultural celebrations.',
@@ -43,7 +43,7 @@ export const brands = [
     id: 'bridal',
     href: '/bridal.html',
     name: 'LoLo Bridal',
-    img: 'gown',
+    img: '15',
     kicker: 'Weddings & events',
     copy:
       'Bridal products, hands-on wedding support, and digital planning resources: everything to prepare for your big day with confidence and peace of mind.',
@@ -53,31 +53,31 @@ export const brands = [
 export const bridalOfferings = [
   {
     title: 'Custom-Made Wedding Gowns',
-    img: 'gown',
+    img: '37',
     copy:
       'Personalised bridal gowns that reflect your style, silhouette and wedding vision, with careful attention to fit, detail and finishing. From timeless elegance to contemporary statement designs.',
   },
   {
     title: 'Personalised Wedding Accessories',
-    img: 'champagne',
+    img: '35',
     copy:
       'Customised champagne and wine glasses, ring holders, wedding veils and other bridal keepsakes that add a special touch to your day and beyond.',
   },
   {
     title: 'Bridal Robes & Getting-Ready Essentials',
-    img: 'robe',
+    img: '42',
     copy:
       'Bridal robes and complementary essentials for beautiful photographs, comfortable preparations and memorable bridal-party experiences.',
   },
   {
     title: 'Bridal Assistant Services',
-    img: 'robe',
+    img: '32',
     copy:
       'Personalised support with fittings, styling, follow-up on important details and wedding-day needs, so you can enjoy the experience while the details receive thoughtful attention.',
   },
   {
     title: 'Wedding Planning & Coordination',
-    img: 'venue',
+    img: '34',
     copy:
       'From bringing your ideas together to helping the day run smoothly. We organise the details and coordinate the moving parts towards a celebration that reflects your vision.',
   },
@@ -213,11 +213,11 @@ export const buildEnquiryMessage = (b) =>
     .join('\n');
 
 export const collections = [
-  { name: 'Wedding Gowns', note: 'Statement bridal silhouettes, made to measure.', img: 'gown' },
-  { name: 'Ruracio & Traditional Wear', note: 'Ceremony sets with presence for dowry and family ceremonies.', img: 'traditional' },
-  { name: 'Red-Carpet Looks', note: 'Statement gowns and evening wear for galas and award events.', img: 'red-carpet' },
-  { name: 'Birthday & Graduation Outfits', note: 'Celebration looks designed around you.', img: 'birthday' },
-  { name: 'Ankara & Kitenge', note: 'Bold prints turned into elegant tailoring.', img: 'hero' },
+  { name: 'Wedding Gowns', note: 'Statement bridal silhouettes, made to measure.', img: '21' },
+  { name: 'Ruracio & Traditional Wear', note: 'Ceremony sets with presence for dowry and family ceremonies.', img: '24' },
+  { name: 'Red-Carpet Looks', note: 'Statement gowns and evening wear for galas and award events.', img: '18' },
+  { name: 'Birthday & Graduation Outfits', note: 'Celebration looks designed around you.', img: '13' },
+  { name: 'Ankara & Kitenge', note: 'Bold prints turned into elegant tailoring.', img: '20' },
 ];
 
 
@@ -239,11 +239,11 @@ export const mfalme = {
   intro:
     'Style, confidence, and distinction, tailored for the modern gentleman. Custom-made suits and African traditional outfits that combine refined tailoring with individual expression.',
   offerings: [
-    { name: 'Custom suits', note: 'Tailored to your measurements for weddings, formal occasions and everyday distinction.', img: 'groom' },
-    { name: 'African traditional wear', note: 'Ruracio and cultural-ceremony outfits with refined detail and bold character.', img: 'mfalme-2' },
-    { name: 'Groom & groomsmen styling', note: 'Coordinated looks that sit beautifully alongside the bride’s gown.', img: 'mfalme-3' },
+    { name: 'Custom suits', note: 'Tailored to your measurements for weddings, formal occasions and everyday distinction.', img: '05' },
+    { name: 'African traditional wear', note: 'Ruracio and cultural-ceremony outfits with refined detail and bold character.', img: '23' },
+    { name: 'Groom & groomsmen styling', note: 'Coordinated looks that sit beautifully alongside the bride’s gown.', img: '06' },
   ],
-  photos: ['14', '23', '06', '05', '12', '33', '39', '24'],
+  photos: ['12', '39', '04', '44'],
 };
 
 export const kidsInfo = {

@@ -26,7 +26,8 @@ const galleryFiles = readdirSync(join(out, 'assets/gallery')).filter((f) => f.en
 const SITE_URL = 'https://lolo-fashion-house.vercel.app';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const img = (name, alt) => `<img class="card-img" src="/assets/images/${name}.jpg" alt="${esc(alt)}" loading="lazy" />`;
+const imgSrc = (name) => (/^\d+$/.test(name) ? `/assets/gallery/${name}.jpg` : `/assets/images/${name}.jpg`);
+const img = (name, alt) => `<img class="card-img" src="${imgSrc(name)}" alt="${esc(alt)}" loading="lazy" />`;
 
 const nav = [
   ['Home', '/'],
@@ -63,7 +64,7 @@ const pageHero = (eyebrow, title, desc, image) => `
   </div>
 </section>`;
 
-const shell = ({ file, title, description, body, ogImage = 'hero' }) => `<!doctype html>
+const shell = ({ file, title, description, body, ogImage = '03' }) => `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -74,7 +75,7 @@ const shell = ({ file, title, description, body, ogImage = 'hero' }) => `<!docty
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(description)}" />
-  <meta property="og:image" content="${SITE_URL}/assets/images/${ogImage}.jpg" />
+  <meta property="og:image" content="${SITE_URL}${imgSrc(ogImage)}" />
   <link rel="canonical" href="${SITE_URL}/${file === 'index.html' ? '' : file}" />
   <link rel="icon" href="/logo.jpg" />
   <link rel="stylesheet" href="/assets/styles.css" />
@@ -174,7 +175,7 @@ pages['index.html'] = shell({
         <a class="button button-ghost" href="/bridal.html">Explore LoLo Bridal</a>
       </div>
     </div>
-    <div class="hero-panel glass-card hero-photo">${img('hero', 'A bride in a custom orange and Ankara ruracio gown made by LoLo')}</div>
+    <div class="hero-panel glass-card hero-photo">${img('03', 'A bride in a custom orange and Ankara ruracio gown made by LoLo')}</div>
   </div>
 </section>
 
@@ -199,7 +200,6 @@ pages['index.html'] = shell({
 
 <section class="section">
   ${head('LoLo Bridal', 'Plan beautifully. Prepare confidently. Celebrate fully.', 'Bridal products, hands-on wedding support, and digital planning resources.')}
-  ${offeringCards()}
   <div class="wrap hero-actions">
     <a class="button button-gold" href="/bridal.html">Explore LoLo Bridal</a>
     <a class="button button-ghost" href="/digital.html">Shop digital products</a>
@@ -209,7 +209,7 @@ pages['index.html'] = shell({
 <section class="section section-dark">
   ${head('Gallery', 'Moments we’ve dressed.', 'A glimpse of weddings, ruracio ceremonies and celebrations where LoLo outfits took centre stage.', true)}
   <div class="wrap gallery-strip">
-    ${galleryFiles.slice(0, 6).map((f, i) => galleryItem(f, i)).join('\n    ')}
+    ${['02', '10', '29', '30', '41', '38'].map((n, i) => galleryItem(n + '.jpg', i)).join('\n    ')}
   </div>
   <div class="wrap hero-actions"><a class="button button-gold" href="/gallery.html">View the full gallery</a></div>
 </section>
@@ -224,9 +224,9 @@ pages['mfalme.html'] = shell({
   file: 'mfalme.html',
   title: 'Mfalme by LoLo | Custom menswear and African traditional outfits',
   description: 'Custom-made suits and African traditional outfits for the modern gentleman, by LoLo Fashion House.',
-  ogImage: 'groom',
+  ogImage: '14',
   body: `
-${pageHero('Mfalme by LoLo · Menswear', 'Tailored for the modern gentleman.', mfalme.intro, img('groom', 'A groom in a custom gold-accent tuxedo jacket'))}
+${pageHero('Mfalme by LoLo · Menswear', 'Tailored for the modern gentleman.', mfalme.intro, img('14', 'A groom in a custom gold-accent tuxedo jacket'))}
 <section class="section">
   <div class="wrap grid grid-collections">
     ${mfalme.offerings.map((o) => card(`<h3>${esc(o.name)}</h3><p>${esc(o.note)}</p>`, img(o.img, o.name))).join('\n    ')}
@@ -261,9 +261,9 @@ pages['bridal.html'] = shell({
   title: 'LoLo Bridal | Wedding gowns, Before I Do, bridal assistance & planning',
   description:
     'Custom wedding gowns, personalised accessories, Before I Do bridal mornings, bridal assistant services and wedding planning.',
-  ogImage: 'gown',
+  ogImage: '27',
   body: `
-${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confidently. Celebrate fully.', 'Your wedding deserves more than beautiful details. It deserves a thoughtful, seamless and memorable experience.', img('gown', 'A bride and groom in a custom wedding gown on a lawn'))}
+${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confidently. Celebrate fully.', 'Your wedding deserves more than beautiful details. It deserves a thoughtful, seamless and memorable experience.', img('27', 'A bride in a custom gown on a wooden staircase'))}
 <section class="section">
   ${offeringCards()}
   <div class="wrap hero-actions">${wa('bridal', 'Hello LoLo Bridal, I would like to make an enquiry.', 'Enquire on WhatsApp')}</div>
@@ -272,8 +272,8 @@ ${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confid
 <section class="section section-dark" id="before-i-do">
   ${head('Before I Do', 'Bridal morning experiences', beforeIDo.intro, true)}
   <div class="wrap grid grid-collections">
-    ${beforeIDo.packages.map((p, i) => card(`<span class="pill">${esc(p.price)}</span><h3>${esc(p.name)}</h3>${priceList(p.items)}`, img(['balloons', 'venue', 'champagne'][i], p.name))).join('\n    ')}
-    ${card(`<span class="pill">À la carte</span><h3>Individual items</h3>${priceList(beforeIDo.addons)}`, img('rings', 'A couple in a custom wedding gown and waistcoat'))}
+    ${beforeIDo.packages.map((p, i) => card(`<span class="pill">${esc(p.price)}</span><h3>${esc(p.name)}</h3>${priceList(p.items)}`, img(['36', '25', '17'][i], p.name))).join('\n    ')}
+    ${card(`<span class="pill">À la carte</span><h3>Individual items</h3>${priceList(beforeIDo.addons)}`, img('11', 'A bride in a custom red Ankara-trim dress'))}
   </div>
   <div class="wrap section-head light">
     <p>${esc(beforeIDo.note)}</p>
@@ -284,7 +284,7 @@ ${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confid
 <section class="section" id="bridal-services">
   ${head('Bridal assistant services', 'The Bridal Guardian Angel', guardianAngel.intro)}
   <div class="wrap grid grid-collections">
-    ${guardianAngel.tiers.map((t, i) => card(`<span class="pill">${esc(t.price)}</span><h3>${esc(t.name)}</h3><ul class="plain-list">${t.points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`, i === 0 ? img('robe', 'A bride in a custom gown holding a bouquet') : '')).join('\n    ')}
+    ${guardianAngel.tiers.map((t, i) => card(`<span class="pill">${esc(t.price)}</span><h3>${esc(t.name)}</h3><ul class="plain-list">${t.points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`, i === 0 ? img('22', 'A bride twirling in a custom white gown') : '')).join('\n    ')}
   </div>
   <div class="wrap section-head">
     <p>${esc(guardianAngel.extra)}</p>
@@ -309,7 +309,7 @@ pages['gallery.html'] = shell({
   file: 'gallery.html',
   title: 'Gallery | Events dressed by LoLo Fashion House',
   description: 'Real weddings, ruracio ceremonies and celebrations where clients wore outfits crafted by LoLo Fashion House.',
-  ogImage: 'traditional',
+  ogImage: '24',
   body: `
 ${pageHero('Gallery', 'Moments we’ve dressed.', 'Real events and real clients: wedding gowns, ruracio and traditional wear, bridal parties and groomswear, all crafted by LoLo Fashion House.')}
 <section class="section">
@@ -328,9 +328,9 @@ pages['digital.html'] = shell({
   title: 'LoLo Bridal Digital Products | Wedding planning tools',
   description:
     'The Bridal Roadmap, Vendor Matchbook, Bridal Party Playbook and Wedding Masterplanner. Available on Selar.',
-  ogImage: 'planner',
+  ogImage: '16',
   body: `
-${pageHero('LoLo Bridal · Digital products', 'Your wedding. Your vision. Your plan.', 'Thoughtfully designed digital resources to help you make informed decisions, stay organised, work with your vendors and prepare with confidence.', img('planner', 'A bride in a custom wedding gown holding a bouquet'))}
+${pageHero('LoLo Bridal · Digital products', 'Your wedding. Your vision. Your plan.', 'Thoughtfully designed digital resources to help you make informed decisions, stay organised, work with your vendors and prepare with confidence.', img('16', 'A bride and groom on a lawn, the bride in a custom caped gown'))}
 <section class="section">
   <div class="wrap grid grid-collections">
     ${digitalProducts
@@ -348,9 +348,9 @@ pages['about.html'] = shell({
   file: 'about.html',
   title: 'About | LoLo Fashion House & LoLo Bridal',
   description: 'Since 2017, LoLo Fashion House has created meaningful, beautifully crafted pieces for life’s special moments.',
-  ogImage: 'birthday',
+  ogImage: '40',
   body: `
-${pageHero('About us', 'Thoughtful design. Personal expression. Beautifully made moments.', 'Clothing is more than what we wear. It is an expression of identity, confidence, culture, and personal style.', img('birthday', 'A client in a custom Ankara outfit made by LoLo'))}
+${pageHero('About us', 'Thoughtful design. Personal expression. Beautifully made moments.', 'Clothing is more than what we wear. It is an expression of identity, confidence, culture, and personal style.', img('40', 'The train of a custom orange satin and Ankara gown'))}
 <section class="section">
   <div class="wrap story-grid">
     <div>
@@ -360,7 +360,6 @@ ${pageHero('About us', 'Thoughtful design. Personal expression. Beautifully made
     </div>
     <div class="story-copy glass-card">${about.paragraphs.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
   </div>
-  ${brandCards()}
 </section>`,
 });
 
