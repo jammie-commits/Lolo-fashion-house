@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Admin | LoLo Fashion House</title>
+  <link rel="icon" href="/logo.jpg" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body>
+<header class="bar">
+  <strong>LoLo admin</strong>
+  <nav id="tabs" hidden>
+    <button data-tab="photos" class="active" type="button">Photos</button>
+    <button data-tab="content" type="button">Page content</button>
+  </nav>
+  <span class="spacer"></span>
+  <a href="/" target="_blank" rel="noopener">View site</a>
+  <button id="logout" type="button" hidden>Log out</button>
+</header>
+
+<main>
+  <section id="login" hidden>
+    <form id="login-form" class="panel narrow">
+      <h1>Admin login</h1>
+      <label>Password<input id="password" type="password" autocomplete="current-password" required /></label>
+      <button class="primary" type="submit">Log in</button>
+      <p class="error" id="login-error" role="alert"></p>
+    </form>
+  </section>
+
+  <section id="photos" hidden>
+    <div class="panel">
+      <h1>Photos</h1>
+      <p class="muted">Add, replace, caption or delete photos. Photos marked “used on pages” are shown on a page, so choose a different photo there before deleting them.</p>
+      <div class="row">
+        <label class="button primary">Add photos<input id="upload" type="file" accept="image/*" multiple hidden /></label>
+        <label class="check"><input id="upload-listed" type="checkbox" checked /> Show new photos in the Gallery page</label>
+      </div>
+    </div>
+    <div id="photo-grid" class="photo-grid"></div>
+  </section>
+
+  <section id="content" hidden>
+    <div class="panel">
+      <h1>Page content</h1>
+      <p class="muted">Edit descriptions, prices and photo choices for each page, then press Save.</p>
+      <div class="row"><button id="save-content" class="primary" type="button">Save changes</button><span id="content-dirty" class="muted"></span></div>
+    </div>
+    <div id="content-form"></div>
+  </section>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<dialog id="picker"><form method="dialog"><div class="row"><strong>Choose a photo</strong><span class="spacer"></span><button>Cancel</button></div></form><div id="picker-grid" class="picker-grid"></div></dialog>
+<script src="/admin/admin.js" defer></script>
+</body>
+</html>

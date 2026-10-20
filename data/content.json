@@ -1,0 +1,365 @@
+{
+  "heroes": {
+    "home": {
+      "eyebrow": "LoLo Fashion House & LoLo Bridal",
+      "title": "Style your moments. Celebrate your story.",
+      "desc": "From custom-made fashion to beautiful bridal experiences, LoLo brings your vision to life through thoughtful design, personalised details, and creative craftsmanship. Discover fashion that expresses you and bridal services that make your special moments unforgettable.",
+      "img": "03.jpg",
+      "alt": "A bride in a custom orange and Ankara ruracio gown made by LoLo"
+    },
+    "bridal": {
+      "eyebrow": "LoLo Bridal · Weddings & Events",
+      "title": "Plan beautifully. Prepare confidently. Celebrate fully.",
+      "desc": "Your wedding deserves more than beautiful details. It deserves a thoughtful, seamless and memorable experience.",
+      "img": "27.jpg",
+      "alt": "A bride in a custom gown on a wooden staircase"
+    },
+    "mfalme": {
+      "eyebrow": "Mfalme by LoLo · Menswear",
+      "title": "Tailored for the modern gentleman.",
+      "desc": "Style, confidence, and distinction, tailored for the modern gentleman. Custom-made suits and African traditional outfits that combine refined tailoring with individual expression.",
+      "img": "14.jpg",
+      "alt": "A groom in a custom gold-accent tuxedo jacket"
+    },
+    "kids": {
+      "eyebrow": "LoLo Kids · Girls’ occasion wear",
+      "title": "Little moments, beautifully dressed.",
+      "desc": "Beautiful outfits for little girls and the special moments that make childhood memorable, with playful charm, thoughtful design and beautiful finishing.",
+      "img": "kids.jpg",
+      "alt": "A little girl in a flower-girl dress"
+    },
+    "digital": {
+      "eyebrow": "LoLo Bridal · Digital products",
+      "title": "Your wedding. Your vision. Your plan.",
+      "desc": "Thoughtfully designed digital resources to help you make informed decisions, stay organised, work with your vendors and prepare with confidence.",
+      "img": "16.jpg",
+      "alt": "A bride and groom on a lawn, the bride in a custom caped gown"
+    },
+    "gallery": {
+      "eyebrow": "Gallery",
+      "title": "Moments we’ve dressed.",
+      "desc": "Real events and real clients: wedding gowns, ruracio and traditional wear, bridal parties and groomswear, all crafted by LoLo Fashion House."
+    },
+    "about": {
+      "eyebrow": "About us",
+      "title": "Thoughtful design. Personal expression. Beautifully made moments.",
+      "desc": "Clothing is more than what we wear. It is an expression of identity, confidence, culture, and personal style.",
+      "img": "40.jpg",
+      "alt": "The train of a custom orange satin and Ankara gown"
+    },
+    "contact": {
+      "eyebrow": "Contact & enquiries",
+      "title": "Let’s bring your vision to life.",
+      "desc": "Have a design in mind, a wedding to plan, or a special occasion coming up? Make an enquiry, discuss your ideas, or book a consultation."
+    }
+  },
+  "homeStrip": [
+    "02.jpg",
+    "10.jpg",
+    "29.jpg",
+    "30.jpg",
+    "41.jpg",
+    "38.jpg"
+  ],
+  "brands": [
+    {
+      "id": "fashion",
+      "href": "/#collections",
+      "name": "LoLo Fashion House",
+      "img": "01.jpg",
+      "kicker": "Custom occasion wear",
+      "copy": "Outfits designed around your occasion, measurements, and personal style. From elegant traditional wedding gowns and red-carpet looks to birthday and graduation outfits, every piece is made to feel uniquely yours."
+    },
+    {
+      "id": "mfalme",
+      "href": "/mfalme.html",
+      "name": "Mfalme by LoLo",
+      "img": "33.jpg",
+      "kicker": "Menswear",
+      "copy": "Style, confidence, and distinction, tailored for the modern gentleman. Custom-made suits and African traditional outfits that combine refined tailoring with individual expression, for weddings, formal occasions and cultural celebrations."
+    },
+    {
+      "id": "kids",
+      "href": "/kids.html",
+      "name": "LoLo Kids",
+      "img": "kids.jpg",
+      "kicker": "Girls’ occasion wear",
+      "copy": "Beautiful outfits for little girls and the special moments that make childhood memorable, from birthdays and family occasions to weddings, with playful charm, thoughtful design and beautiful finishing."
+    },
+    {
+      "id": "bridal",
+      "href": "/bridal.html",
+      "name": "LoLo Bridal",
+      "img": "15.jpg",
+      "kicker": "Weddings & events",
+      "copy": "Bridal products, hands-on wedding support, and digital planning resources: everything to prepare for your big day with confidence and peace of mind."
+    }
+  ],
+  "collections": [
+    {
+      "name": "Wedding Gowns",
+      "note": "Statement bridal silhouettes, made to measure.",
+      "img": "21.jpg"
+    },
+    {
+      "name": "Ruracio & Traditional Wear",
+      "note": "Ceremony sets with presence for dowry and family ceremonies.",
+      "img": "24.jpg"
+    },
+    {
+      "name": "Red-Carpet Looks",
+      "note": "Statement gowns and evening wear for galas and award events.",
+      "img": "18.jpg"
+    },
+    {
+      "name": "Birthday & Graduation Outfits",
+      "note": "Celebration looks designed around you.",
+      "img": "13.jpg"
+    },
+    {
+      "name": "Ankara & Kitenge",
+      "note": "Bold prints turned into elegant tailoring.",
+      "img": "20.jpg"
+    }
+  ],
+  "bridalOfferings": [
+    {
+      "title": "Custom-Made Wedding Gowns",
+      "img": "37.jpg",
+      "copy": "Personalised bridal gowns that reflect your style, silhouette and wedding vision, with careful attention to fit, detail and finishing. From timeless elegance to contemporary statement designs."
+    },
+    {
+      "title": "Personalised Wedding Accessories",
+      "img": "35.jpg",
+      "copy": "Customised champagne and wine glasses, ring holders, wedding veils and other bridal keepsakes that add a special touch to your day and beyond."
+    },
+    {
+      "title": "Bridal Robes & Getting-Ready Essentials",
+      "img": "42.jpg",
+      "copy": "Bridal robes and complementary essentials for beautiful photographs, comfortable preparations and memorable bridal-party experiences."
+    },
+    {
+      "title": "Bridal Assistant Services",
+      "img": "32.jpg",
+      "copy": "Personalised support with fittings, styling, follow-up on important details and wedding-day needs, so you can enjoy the experience while the details receive thoughtful attention."
+    },
+    {
+      "title": "Wedding Planning & Coordination",
+      "img": "34.jpg",
+      "copy": "From bringing your ideas together to helping the day run smoothly. We organise the details and coordinate the moving parts towards a celebration that reflects your vision."
+    }
+  ],
+  "beforeIDo": {
+    "intro": "Set the tone for your wedding day with a beautifully styled bridal morning: a special space to get ready, take photographs and celebrate with your bridal party before walking down the aisle.",
+    "note": "Prices are exclusive of transport and delivery.",
+    "packages": [
+      {
+        "name": "Before the “I Do”",
+        "price": "KSh 21,000",
+        "items": [
+          [
+            "Bridal Balloon Moment",
+            "KSh 9,000"
+          ],
+          [
+            "Personalised Bridal Ring Mirror",
+            "KSh 4,500"
+          ],
+          [
+            "Personalised Champagne Glasses (pair)",
+            "KSh 3,000"
+          ],
+          [
+            "Personalised Champagne Bottle",
+            "KSh 1,500"
+          ],
+          [
+            "Personalised Bridal & Groom Hangers",
+            "KSh 3,000"
+          ]
+        ]
+      },
+      {
+        "name": "Moments Before I Do",
+        "price": "KSh 27,000",
+        "items": [
+          [
+            "Lux Room décor, including bridesmaids’ props and sunglasses",
+            "KSh 15,000"
+          ]
+        ]
+      },
+      {
+        "name": "Premium Package",
+        "price": "Enquire",
+        "items": [
+          [
+            "Includes sunglasses for the bride & groom",
+            ""
+          ]
+        ]
+      }
+    ],
+    "addons": [
+      [
+        "“Cheers to I Do” set: personalised champagne glasses + personalised champagne",
+        "KSh 5,000"
+      ],
+      [
+        "Each extra personalised glass",
+        "KSh 1,500"
+      ],
+      [
+        "Ring mirror set",
+        "KSh 4,500"
+      ],
+      [
+        "Personalised hangers: Bride & Groom",
+        "KSh 3,000"
+      ],
+      [
+        "Personalised hangers: Bridesmaids",
+        "KSh 1,500"
+      ],
+      [
+        "Sunglasses",
+        "On request"
+      ]
+    ],
+    "packageImages": [
+      "36.jpg",
+      "25.jpg",
+      "17.jpg"
+    ],
+    "addonsImage": "11.jpg"
+  },
+  "guardianAngel": {
+    "intro": "Over six years of wedding-planning experience and a decade in fashion design, brought together to protect your bridal experience. You deserve to be the bride, not the person solving problems on your wedding day.",
+    "tiers": [
+      {
+        "name": "The Peaceful Morning",
+        "price": "KSh 35,000",
+        "points": [
+          "2 assistants, up to 6 hours",
+          "Written Peace Schedule",
+          "Dressing help for bride + up to 4 bridesmaids",
+          "Minor wardrobe mishap support"
+        ]
+      },
+      {
+        "name": "The Bridal Guardian Angel",
+        "price": "KSh 65,000",
+        "points": [
+          "2 assistants, up to 10 hours",
+          "Design Alignment session & Look Board",
+          "One fitting appointment",
+          "Ceremony & photo-session support, 1 outfit change"
+        ]
+      },
+      {
+        "name": "The Executive Peace Experience",
+        "price": "KSh 95,000",
+        "points": [
+          "3-person team, up to 14 hours",
+          "Full Design Alignment & Look Board",
+          "Up to 2 fittings, up to 8 bridesmaids",
+          "Up to 3 outfit changes & groom attire check"
+        ]
+      }
+    ],
+    "extra": "Also available on its own: The Bridal Vision Session, KSh 15,000, fully redeemable toward any package.",
+    "note": "Coverage is limited to the agreed hours and programme. Travel outside Nairobi is quoted separately.",
+    "image": "22.jpg"
+  },
+  "planning": {
+    "intro": "Three levels of support for a calmer, more coordinated celebration. Detailed service packages and deliverables are available on request.",
+    "tiers": [
+      {
+        "name": "The Wedding Day Peace",
+        "price": "From KSh 50,000",
+        "detail": "Coordination beginning two weeks before the wedding."
+      },
+      {
+        "name": "The Guided Celebration",
+        "price": "From KSh 90,000",
+        "detail": "Structure, deadlines and oversight from one month before."
+      },
+      {
+        "name": "The Full Peace Experience",
+        "price": "From KSh 250,000",
+        "detail": "A planning partner from early vision and budgeting to celebration."
+      }
+    ],
+    "note": "Weddings above 300 guests, multi-event celebrations, or those held away from Nairobi are quoted individually."
+  },
+  "digitalProducts": [
+    {
+      "name": "The Bridal Roadmap",
+      "copy": "For the bride who needs clarity on where to begin. Understand the wedding planning journey, identify your priorities, and map out the next steps towards your big day."
+    },
+    {
+      "name": "The Vendor Matchbook",
+      "copy": "Approach vendor selection more intentionally: organise your options, ask the right questions, and keep important vendor information together as you decide."
+    },
+    {
+      "name": "The Bridal Party Playbook",
+      "copy": "Clarify roles, expectations, budgets, preparations and wedding-day responsibilities so everyone understands how to contribute, and protect the joy of your experience."
+    },
+    {
+      "name": "The Wedding Masterplanner",
+      "copy": "Your comprehensive companion from beginning to end. Manage timelines, budgets, vendors, tasks and essential details in one organised system."
+    }
+  ],
+  "about": {
+    "paragraphs": [
+      "LoLo Fashion House was born from a journey of creativity, self-discovery, and a passion for fashion. Since 2017, what began as a small venture has grown into a fashion brand dedicated to creating meaningful, beautifully crafted pieces for life’s special moments.",
+      "Our work is rooted in the belief that clothing is more than what we wear. It is an expression of identity, confidence, culture, and personal style.",
+      "Through LoLo Fashion House, we create custom-made outfits for a variety of occasions. Through Mfalme, we celebrate the modern gentleman and African-inspired menswear. Through LoLo Kids, we bring thoughtful designs to little girls. And through LoLo Bridal, we extend our creativity beyond the gown to the accessories, preparations, planning tools, and experiences that make weddings special.",
+      "Our vision is to build a connected fashion and bridal experience where creativity meets craftsmanship, and every client can find something that reflects their story."
+    ],
+    "promise": "Thoughtful design. Personal expression. Beautifully made moments."
+  },
+  "mfalme": {
+    "intro": "Style, confidence, and distinction, tailored for the modern gentleman. Custom-made suits and African traditional outfits that combine refined tailoring with individual expression.",
+    "offerings": [
+      {
+        "name": "Custom suits",
+        "note": "Tailored to your measurements for weddings, formal occasions and everyday distinction.",
+        "img": "05.jpg"
+      },
+      {
+        "name": "African traditional wear",
+        "note": "Ruracio and cultural-ceremony outfits with refined detail and bold character.",
+        "img": "23.jpg"
+      },
+      {
+        "name": "Groom & groomsmen styling",
+        "note": "Coordinated looks that sit beautifully alongside the bride’s gown.",
+        "img": "06.jpg"
+      }
+    ],
+    "photos": [
+      "12.jpg",
+      "39.jpg",
+      "04.jpg",
+      "44.jpg"
+    ]
+  },
+  "kidsInfo": {
+    "intro": "Beautiful outfits for little girls and the special moments that make childhood memorable, with playful charm, thoughtful design and beautiful finishing.",
+    "occasions": [
+      [
+        "Birthdays",
+        "Party dresses made to twirl in."
+      ],
+      [
+        "Weddings & flower girls",
+        "Matching the bridal party, comfortable all day."
+      ],
+      [
+        "Family occasions",
+        "Church, holidays and photoshoots."
+      ]
+    ]
+  }
+}
