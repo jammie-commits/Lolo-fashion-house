@@ -29,3 +29,13 @@ Open `/admin/` on the live site and log in. Photos can be added, replaced, capti
   - `GITHUB_TOKEN`: a fine-grained personal access token limited to this repository with **Contents: Read and write**.
   - Optional: `GITHUB_REPO` (default `jammie-commits/Lolo-fashion-house`) and `GITHUB_BRANCH` (default `main`).
 - Local testing: run the handlers with `ADMIN_STORAGE=fs` to write to local files instead of GitHub (ignored on Vercel). Use a copy of the repo, since it edits `data/` in place.
+
+## Self-hosted server (Vultr)
+
+`server.mjs` is a dependency-free Node server: it serves `site/` and runs the admin API, saving edits straight to `data/` and `site/assets/gallery/` and regenerating the pages in a second or two. No GitHub token is needed.
+
+- Run locally: `ADMIN_PASSWORD=choose-one PORT=3000 npm start`
+- Deploy: `deploy/deploy.sh root@SERVER_IP` (installs Node, creates a `lolo` systemd service, syncs the code). Set `DOMAIN=example.com` to add HTTPS through Caddy. Set `ADMIN_PASSWORD` or one is generated on the first deploy and printed once.
+- Re-deploying never overwrites admin edits (`data/` and the gallery folder are left alone after the first deploy).
+- Without a domain the site is served over plain HTTP, so the admin password is not encrypted in transit. Use a domain with HTTPS for real use.
+- The Vercel setup (`api/` as serverless functions with `GITHUB_TOKEN`) still works but is no longer the primary host.

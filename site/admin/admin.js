@@ -102,7 +102,7 @@
           if (!replace.files[0]) return;
           await run(async () => {
             await api('/api/photos', 'PUT', { file: p.file, image: await toJpeg(replace.files[0]) });
-            toast('Photo replaced. The live site updates in about a minute.');
+            toast('Photo replaced. The live site updates in a few seconds.');
             await loadPhotos();
           });
         });
@@ -118,7 +118,7 @@
             { class: 'actions' },
             h('button', { type: 'button', class: 'primary', onclick: () => run(async () => {
               await api('/api/photos', 'PUT', { file: p.file, alt: alt.value, listed: listed.checked });
-              toast('Saved. The live site updates in about a minute.');
+              toast('Saved. The live site updates in a few seconds.');
               await loadPhotos();
             }) }, 'Save'),
             h('label', { class: 'button' }, 'Replace', replace),
@@ -126,7 +126,7 @@
               if (!confirm('Delete this photo permanently?')) return;
               run(async () => {
                 await api('/api/photos', 'DELETE', { file: p.file });
-                toast('Photo deleted. The live site updates in about a minute.');
+                toast('Photo deleted. The live site updates in a few seconds.');
                 await loadPhotos();
               });
             } }, 'Delete'),
@@ -157,7 +157,7 @@
         toast(`Uploading ${i + 1} of ${files.length}…`);
         await api('/api/photos', 'POST', { image: await toJpeg(f), listed: $('#upload-listed').checked });
       }
-      toast('Photos added. The live site updates in about a minute.');
+      toast('Photos added. The live site updates in a few seconds.');
       await loadPhotos();
     });
   });
@@ -274,7 +274,7 @@
       await api('/api/content', 'PUT', { content });
       dirty = false;
       $('#content-dirty').textContent = '';
-      toast('Saved. The live site updates in about a minute.');
+      toast('Saved. The live site updates in a few seconds.');
     }),
   );
 

@@ -23,7 +23,8 @@ export const checkPassword = (candidate) => Boolean(env('ADMIN_PASSWORD')) && sa
 
 export const sessionCookie = (req) => {
   const exp = Math.floor(Date.now() / 1000) + SESSION_SECONDS;
-  const secure = (req.headers['x-forwarded-proto'] || 'https') === 'https' ? '; Secure' : '';
+  const proto = req.headers['x-forwarded-proto'] || (req.socket?.encrypted ? 'https' : 'http');
+  const secure = proto === 'https' ? '; Secure' : '';
   return `lolo_admin=${exp}.${sign(exp)}; Path=/api; HttpOnly; SameSite=Strict; Max-Age=${SESSION_SECONDS}${secure}`;
 };
 
@@ -104,7 +105,7 @@ const github = () => {
   };
 };
 
-// ADMIN_STORAGE=fs writes to the local checkout; it exists for local testing only.
+// ADMIN_STORAGE=fs writes to the local checkout. It is used by the self-hosted server (server.mjs) and for local testing.
 const localFs = () => ({
   read: async (path) => readFile(join(process.cwd(), path)).then((content) => ({ content })).catch(() => null),
   write: async (path, buffer) => {

@@ -13,7 +13,7 @@ export default handle(
 
     if (req.method !== 'POST') throw new HttpError(405, 'Method not allowed');
 
-    const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '').split(',')[0].trim();
+    const ip = String(((process.env.TRUST_PROXY === '1' || process.env.VERCEL) && req.headers['x-forwarded-for']) || req.socket?.remoteAddress || '').split(',')[0].trim();
     const recent = (failures.get(ip) || []).filter((t) => Date.now() - t < 15 * 60 * 1000);
     if (recent.length >= 8) throw new HttpError(429, 'Too many attempts. Try again in a few minutes.');
 
