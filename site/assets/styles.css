@@ -1,18 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg: #0e0b09;
-  --bg-soft: #181209;
-  --surface: rgba(255, 243, 220, 0.07);
-  --surface-strong: rgba(255, 243, 220, 0.11);
-  --text: #f7efe0;
-  --muted: rgba(247, 239, 224, 0.72);
-  /* Amber-gold pulled directly from the LoLo logo mark */
-  --gold: #c8913b;
-  --gold-bright: #e8ac5c;
-  --gold-deep: #9a6a1e;
-  --line: rgba(200, 145, 59, 0.24);
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  /* Brand palette */
+  --ivory: #f7f0e8;
+  --champagne: #dec5b1;
+  --rose: #b98782;
+  --espresso: #392c29;
+  --gold: #b69a72;
+
+  --bg: var(--ivory);
+  --bg-soft: var(--champagne);
+  --surface: rgba(255, 255, 255, 0.6);
+  --surface-strong: rgba(255, 255, 255, 0.8);
+  --text: var(--espresso);
+  --muted: rgba(57, 44, 41, 0.76);
+  /* Small accent text: a deepened rose so it stays readable on ivory */
+  --gold-bright: #8a5e59;
+  --gold-deep: #6f4a46;
+  --line: rgba(182, 154, 114, 0.45);
+  --shadow: 0 18px 50px rgba(57, 44, 41, 0.12);
   --radius: 26px;
   --radius-sm: 18px;
   --maxw: 1200px;
@@ -31,9 +37,9 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top left, rgba(200, 145, 59, 0.18), transparent 34%),
-    radial-gradient(circle at 80% 20%, rgba(232, 172, 92, 0.13), transparent 30%),
-    linear-gradient(180deg, #130d08 0%, #080705 100%);
+    radial-gradient(circle at top left, rgba(222, 197, 177, 0.55), transparent 38%),
+    radial-gradient(circle at 85% 15%, rgba(185, 135, 130, 0.18), transparent 32%),
+    var(--ivory);
   color: var(--text);
   font-family: var(--body);
   line-height: 1.5;
@@ -66,8 +72,8 @@ input,
 textarea,
 select {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(57, 44, 41, 0.14);
+  background: rgba(255, 255, 255, 0.55);
   color: var(--text);
   border-radius: 16px;
   padding: 14px 16px;
@@ -77,8 +83,8 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: rgba(200, 145, 59, 0.72);
-  box-shadow: 0 0 0 4px rgba(200, 145, 59, 0.12);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(182, 154, 114, 0.25);
 }
 
 textarea {
@@ -106,12 +112,12 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 25%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 25%);
   pointer-events: none;
 }
 
 .glass-card {
-  background: linear-gradient(180deg, var(--surface), rgba(255, 255, 255, 0.03));
+  background: linear-gradient(180deg, var(--surface), rgba(255, 255, 255, 0.55));
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -122,9 +128,9 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 9, 8, 0.72);
+  background: rgba(247, 240, 232, 0.88);
   backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(57, 44, 41, 0.14);
 }
 
 .nav {
@@ -321,19 +327,19 @@ h3 {
 }
 
 .button-gold {
-  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
-  color: #18120c;
-  box-shadow: 0 12px 28px rgba(200, 145, 59, 0.28);
+  background: var(--espresso);
+  color: var(--ivory);
+  box-shadow: 0 12px 28px rgba(57, 44, 41, 0.22);
 }
 
 .button-ghost {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(57, 44, 41, 0.14);
+  background: rgba(255, 255, 255, 0.55);
   color: var(--text);
 }
 
 .button-ghost.danger {
-  color: #ffb79d;
+  color: #9a3f2f;
 }
 
 .full-width {
@@ -351,8 +357,8 @@ h3 {
 .stat {
   padding: 18px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(57, 44, 41, 0.14);
 }
 
 .stat strong {
@@ -391,7 +397,7 @@ h3 {
   align-items: center;
   padding: 16px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .mini-card h3 {
@@ -414,9 +420,9 @@ h3 {
 
 .marquee {
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(57, 44, 41, 0.14);
+  border-bottom: 1px solid rgba(57, 44, 41, 0.14);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .marquee-track {
@@ -483,8 +489,8 @@ h3 {
 .tab,
 .chip,
 .link-button {
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(57, 44, 41, 0.14);
+  background: rgba(255, 255, 255, 0.55);
   color: var(--text);
   font-size: 0.9rem;
 }
@@ -494,12 +500,12 @@ h3 {
 }
 
 .pill-success {
-  border-color: rgba(136, 209, 144, 0.4);
-  color: #bff2c7;
+  border-color: rgba(47, 107, 61, 0.4);
+  color: #2f6b3d;
 }
 
 .subtle {
-  color: rgba(246, 239, 226, 0.6);
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
@@ -520,8 +526,8 @@ h3 {
 }
 
 .product-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55));
+  border: 1px solid rgba(57, 44, 41, 0.14);
   border-radius: var(--radius);
 }
 
@@ -541,7 +547,7 @@ h3 {
 .product-media span {
   font-family: var(--display);
   font-size: 5rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
 }
 
 .product-copy {
@@ -549,7 +555,7 @@ h3 {
 }
 
 .product-row.meta {
-  color: rgba(246, 239, 226, 0.65);
+  color: var(--muted);
   font-size: 0.88rem;
 }
 
@@ -589,13 +595,13 @@ h3 {
 
 .chat-bubble.user {
   justify-self: end;
-  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
-  color: #18120c;
+  background: var(--espresso);
+  color: var(--ivory);
 }
 
 .chat-bubble.assistant {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(57, 44, 41, 0.14);
 }
 
 .chat-input-row {
@@ -614,8 +620,8 @@ h3 {
   gap: 8px;
   padding: 18px;
   border-radius: 22px;
-  border: 1px dashed rgba(200, 145, 59, 0.38);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(182, 154, 114, 0.7);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .upload-box input {
@@ -631,7 +637,7 @@ h3 {
 .style-preview {
   margin-top: 16px;
   border-radius: 22px;
-  border: 1px solid rgba(200, 145, 59, 0.24);
+  border: 1px solid rgba(182, 154, 114, 0.45);
 }
 
 .result-grid {
@@ -645,8 +651,8 @@ h3 {
 .metric-card,
 .reply-box,
 .chat-audit > div {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(57, 44, 41, 0.14);
   border-radius: 18px;
 }
 
@@ -673,7 +679,7 @@ h3 {
 .insight-block {
   margin-top: 18px;
   padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(57, 44, 41, 0.14);
 }
 
 .insight-block p {
@@ -703,7 +709,7 @@ h3 {
 
 .success-note {
   margin-top: 14px;
-  color: #bff2c7;
+  color: #2f6b3d;
 }
 
 .admin-overview {
@@ -723,8 +729,8 @@ h3 {
 }
 
 .tab.active {
-  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
-  color: #18120c;
+  background: var(--espresso);
+  color: var(--ivory);
   border-color: transparent;
 }
 
@@ -792,7 +798,7 @@ h3 {
 
 .error-note {
   margin: 0;
-  color: #ffb3a8;
+  color: #9a3f2f;
 }
 
 .admin-toolbar {

@@ -27,7 +27,7 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(215, 177, 93, 0.25);
+  border-bottom: 1px solid rgba(182, 154, 114, 0.5);
 }
 
 .plain-list li {
@@ -183,4 +183,46 @@
 
 .lightbox .lb-next {
   right: 16px;
+}
+
+/* Brand palette surfaces */
+.section-dark {
+  background: linear-gradient(180deg, rgba(222, 197, 177, 0.62), rgba(222, 197, 177, 0.38));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.section-dark::before {
+  display: none;
+}
+
+.pill {
+  background: rgba(185, 135, 130, 0.16);
+  border: 1px solid rgba(185, 135, 130, 0.55);
+  color: var(--espresso);
+}
+
+.site-footer {
+  background: var(--espresso);
+  color: rgba(247, 240, 232, 0.8);
+  border-top: 3px solid var(--gold);
+}
+
+.site-footer a,
+.site-footer strong {
+  color: var(--ivory);
+}
+
+.gallery-item,
+.card-img,
+.hero-photo {
+  box-shadow: 0 10px 30px rgba(57, 44, 41, 0.12);
+}
+
+.button-gold:hover {
+  background: #4b3b37;
+}
+
+.brand-name em {
+  color: var(--rose);
 }

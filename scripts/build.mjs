@@ -79,7 +79,7 @@ const shell = ({ file, title, description, body, ogImage = heroes.home.img }) =>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}" />
-  <meta name="theme-color" content="#1C1B3A" />
+  <meta name="theme-color" content="#F7F0E8" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(description)}" />
