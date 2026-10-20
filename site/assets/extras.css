@@ -383,3 +383,7 @@ textarea:focus-visible {
     transition: none !important;
   }
 }
+
+[id] {
+  scroll-margin-top: 96px;
+}

@@ -40,7 +40,7 @@ const img = (name, alt) =>
 
 const nav = [
   ['Home', '/'],
-  ['Fashion House', '/#collections'],
+  ['Fashion House', '/fashion.html'],
   ['Mfalme', '/mfalme.html'],
   ['Kids', '/kids.html'],
   ['Bridal', '/bridal.html'],
@@ -177,7 +177,7 @@ const contactCards = () => `
 
 const brandCards = (list = brands) => `
 <div class="wrap grid grid-collections">
-  ${list.map((b) => card(`<span class="pill">${esc(b.kicker)}</span><h3>${esc(b.name)}</h3><p>${esc(b.copy)}</p><a class="button button-ghost" href="${b.href}">Explore</a>`, img(b.img, b.name))).join('\n  ')}
+  ${list.map((b) => ({ ...b, href: b.href === '/#collections' ? '/fashion.html' : b.href })).map((b) => card(`<span class="pill">${esc(b.kicker)}</span><h3>${esc(b.name)}</h3><p>${esc(b.copy)}</p><a class="button button-ghost" href="${b.href}">Explore</a>`, img(b.img, b.name))).join('\n  ')}
 </div>`;
 
 const offeringCards = () => `
@@ -228,7 +228,7 @@ pages['index.html'] = shell({
       <p class="brand-statement">Style Your Moments. Celebrate Your Story.</p>
       <p class="lead">${esc(heroes.home.desc)}</p>
       <div class="hero-actions">
-        <a class="button button-gold" href="#collections">Explore Our Collections</a>
+        <a class="button button-gold" href="/fashion.html">Explore Our Collections</a>
         <a class="button button-ghost" href="/bridal.html">Discover LoLo Bridal</a>
       </div>
     </div>
@@ -243,10 +243,10 @@ pages['index.html'] = shell({
 
 <section class="section section-dark" id="collections">
   ${head('LoLo Fashion House', 'Custom outfits for every occasion.', 'Made around your measurements and personal style: traditional wedding gowns, red-carpet looks, birthday outfits and graduation ensembles.')}
-  <div class="wrap grid grid-collections">
-    ${collections.map((c) => card(`<h3>${esc(c.name)}</h3><p>${esc(c.note)}</p>`, img(c.img, c.name))).join('\n    ')}
+  <div class="wrap hero-actions">
+    <a class="button button-gold" href="/fashion.html">View the collections</a>
+    ${wa('fashion', 'Hello LoLo Fashion House, I would like to request a custom design.', 'Request a Custom Design', true)}
   </div>
-  <div class="wrap hero-actions">${wa('fashion', 'Hello LoLo Fashion House, I would like to request a custom design.', 'Request a Custom Design')}</div>
 </section>
 
 <section class="section">
@@ -299,6 +299,28 @@ pages['index.html'] = shell({
     </div>
     <div class="hero-panel hero-photo">${img('28.jpg', 'A wedding party celebrating with a bride in white')}</div>
   </div>
+</section>`,
+});
+
+pages['fashion.html'] = shell({
+  file: 'fashion.html',
+  title: 'LoLo Fashion House | Custom occasion wear & traditional wedding outfits',
+  description: 'Custom-made gowns, traditional wedding outfits, red-carpet looks, Ankara and Kitenge designs, designed in Kenya and made around your measurements.',
+  ogImage: collections[0].img,
+  body: `
+<section class="hero section page-hero">
+  <div class="wrap page-hero-copy">
+    <span class="eyebrow">LoLo Fashion House</span>
+    <h1>Custom outfits for every occasion.</h1>
+    <p class="lead">Outfits designed around your occasion, measurements and personal style: traditional wedding gowns, red-carpet looks, birthday and graduation outfits, every piece made to feel uniquely yours.</p>
+    <div class="hero-actions">${wa('fashion', 'Hello LoLo Fashion House, I would like to request a custom design.', 'Request a Custom Design')}<a class="button button-ghost" href="/international.html">International orders</a></div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap grid grid-collections">
+    ${collections.map((c) => card(`<h3>${esc(c.name)}</h3><p>${esc(c.note)}</p>`, img(c.img, c.name))).join('\n    ')}
+  </div>
+  <div class="wrap hero-actions">${wa('fashion', 'Hello LoLo Fashion House, I would like to book a consultation.', 'Book a Consultation')}<a class="button button-ghost" href="/mfalme.html">Mfalme menswear</a><a class="button button-ghost" href="/kids.html">LoLo Kids</a></div>
 </section>`,
 });
 

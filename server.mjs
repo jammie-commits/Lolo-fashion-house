@@ -3,6 +3,8 @@
 import { createReadStream } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
+import { gzipSync } from 'node:zlib';
+import { readFile } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 import { dirname, extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -91,7 +93,6 @@ const securityHeaders = {
 };
 
 const serveStatic = async (req, res, pathname) => {
-  if (pathname === '/fashion.html') return send(res, 301, '', { Location: '/' });
   let rel = normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, '');
   if (rel.endsWith('/')) rel += 'index.html';
   let file = join(siteDir, rel);
@@ -113,6 +114,11 @@ const serveStatic = async (req, res, pathname) => {
   if (pathname.startsWith('/admin')) {
     headers['X-Robots-Tag'] = 'noindex, nofollow';
     headers['Cache-Control'] = 'no-store';
+  }
+  if (/\.(html|css|js|xml|json|svg|txt)$/.test(ext) && /\bgzip\b/.test(req.headers['accept-encoding'] || '')) {
+    const body = gzipSync(await readFile(file));
+    res.writeHead(200, { ...headers, 'Content-Length': body.length, 'Content-Encoding': 'gzip', Vary: 'Accept-Encoding' });
+    return res.end(req.method === 'HEAD' ? undefined : body);
   }
   res.writeHead(200, headers);
   if (req.method === 'HEAD') return res.end();
