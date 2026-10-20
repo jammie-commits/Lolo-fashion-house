@@ -14,6 +14,7 @@ export const tagline = 'Style your moments. Celebrate your story.';
 export const brands = [
   {
     id: 'fashion',
+    href: '/#collections',
     name: 'LoLo Fashion House',
     img: 'traditional',
     kicker: 'Custom occasion wear',
@@ -22,6 +23,7 @@ export const brands = [
   },
   {
     id: 'mfalme',
+    href: '/mfalme.html',
     name: 'Mfalme by LoLo',
     img: 'groom',
     kicker: 'Menswear',
@@ -30,6 +32,7 @@ export const brands = [
   },
   {
     id: 'kids',
+    href: '/kids.html',
     name: 'LoLo Kids',
     img: 'kids',
     kicker: 'Girls’ occasion wear',
@@ -38,6 +41,7 @@ export const brands = [
   },
   {
     id: 'bridal',
+    href: '/bridal.html',
     name: 'LoLo Bridal',
     img: 'gown',
     kicker: 'Weddings & events',
@@ -230,3 +234,24 @@ export const enquiryOptions = [
   'Wedding Planning & Coordination',
   'Other',
 ];
+
+export const mfalme = {
+  intro:
+    'Style, confidence, and distinction, tailored for the modern gentleman. Custom-made suits and African traditional outfits that combine refined tailoring with individual expression.',
+  offerings: [
+    { name: 'Custom suits', note: 'Tailored to your measurements for weddings, formal occasions and everyday distinction.', img: 'groom' },
+    { name: 'African traditional wear', note: 'Ruracio and cultural-ceremony outfits with refined detail and bold character.', img: 'mfalme-2' },
+    { name: 'Groom & groomsmen styling', note: 'Coordinated looks that sit beautifully alongside the bride’s gown.', img: 'mfalme-3' },
+  ],
+  photos: ['14', '23', '06', '05', '12', '33', '39', '24'],
+};
+
+export const kidsInfo = {
+  intro:
+    'Beautiful outfits for little girls and the special moments that make childhood memorable, with playful charm, thoughtful design and beautiful finishing.',
+  occasions: [
+    ['Birthdays', 'Party dresses made to twirl in.'],
+    ['Weddings & flower girls', 'Matching the bridal party, comfortable all day.'],
+    ['Family occasions', 'Church, holidays and photoshoots.'],
+  ],
+};

@@ -8,6 +8,8 @@ import {
   bridalOfferings,
   brands,
   collections,
+  kidsInfo,
+  mfalme,
   contacts,
   digitalProducts,
   enquiryOptions,
@@ -28,12 +30,13 @@ const img = (name, alt) => `<img class="card-img" src="/assets/images/${name}.jp
 
 const nav = [
   ['Home', '/'],
-  ['Fashion House', '/fashion.html'],
-  ['Bridal', '/bridal.html'],
-  ['Gallery', '/gallery.html'],
+  ['LoLo Bridal', '/bridal.html'],
+  ['Mfalme by LoLo', '/mfalme.html'],
+  ['LoLo Kids', '/kids.html'],
   ['Digital Products', '/digital.html'],
-  ['About', '/about.html'],
-  ['Contact', '/contact.html'],
+  ['Gallery', '/gallery.html'],
+  ['About Us', '/about.html'],
+  ['Contact Us', '/contact.html'],
 ];
 
 const wa = (brand, text, label, ghost = false) =>
@@ -123,7 +126,7 @@ const contactCards = () => `
 
 const brandCards = (list = brands) => `
 <div class="wrap grid grid-collections">
-  ${list.map((b) => card(`<span class="pill">${esc(b.kicker)}</span><h3>${esc(b.name)}</h3><p>${esc(b.copy)}</p>`, img(b.img, b.name))).join('\n  ')}
+  ${list.map((b) => card(`<span class="pill">${esc(b.kicker)}</span><h3>${esc(b.name)}</h3><p>${esc(b.copy)}</p><a class="button button-ghost" href="${b.href}">Explore</a>`, img(b.img, b.name))).join('\n  ')}
 </div>`;
 
 const offeringCards = () => `
@@ -156,7 +159,7 @@ pages['index.html'] = shell({
         <a class="button button-ghost" href="/bridal.html">Explore LoLo Bridal</a>
       </div>
     </div>
-    <div class="hero-panel glass-card hero-photo">${img('hero', 'A woman in a pink gown at the doorway of a fashion atelier')}</div>
+    <div class="hero-panel glass-card hero-photo">${img('hero', 'A bride in a custom orange and Ankara ruracio gown made by LoLo')}</div>
   </div>
 </section>
 
@@ -171,8 +174,16 @@ pages['index.html'] = shell({
   ${brandCards()}
 </section>
 
-<section class="section section-dark">
-  ${head('LoLo Bridal', 'Plan beautifully. Prepare confidently. Celebrate fully.', 'Bridal products, hands-on wedding support, and digital planning resources.', true)}
+<section class="section section-dark" id="collections">
+  ${head('LoLo Fashion House', 'Custom outfits for every occasion.', 'Made around your measurements and personal style: traditional wedding gowns, red-carpet looks, birthday outfits and graduation ensembles.', true)}
+  <div class="wrap grid grid-collections">
+    ${collections.map((c) => card(`<h3>${esc(c.name)}</h3><p>${esc(c.note)}</p>`, img(c.img, c.name))).join('\n    ')}
+  </div>
+  <div class="wrap hero-actions">${wa('fashion', 'Hello LoLo Fashion House, I would like to book a consultation.', 'Book a consultation')}</div>
+</section>
+
+<section class="section">
+  ${head('LoLo Bridal', 'Plan beautifully. Prepare confidently. Celebrate fully.', 'Bridal products, hands-on wedding support, and digital planning resources.')}
   ${offeringCards()}
   <div class="wrap hero-actions">
     <a class="button button-gold" href="/bridal.html">Explore LoLo Bridal</a>
@@ -194,34 +205,39 @@ pages['index.html'] = shell({
 </section>`,
 });
 
-pages['fashion.html'] = shell({
-  file: 'fashion.html',
-  title: 'LoLo Fashion House | Custom occasion wear, Mfalme menswear, LoLo Kids',
-  description:
-    'Custom-made outfits for weddings, red-carpet events, birthdays and graduations, plus Mfalme menswear and LoLo Kids.',
-  ogImage: 'traditional',
+pages['mfalme.html'] = shell({
+  file: 'mfalme.html',
+  title: 'Mfalme by LoLo | Custom menswear and African traditional outfits',
+  description: 'Custom-made suits and African traditional outfits for the modern gentleman, by LoLo Fashion House.',
+  ogImage: 'groom',
   body: `
-${pageHero('LoLo Fashion House', 'Made for your moments. Designed for your story.', 'Custom-made outfits for life’s most memorable occasions: traditional wedding gowns, red-carpet looks, birthday outfits and graduation ensembles.', img('red-carpet', 'A woman in a navy gown on a red carpet'))}
+${pageHero('Mfalme by LoLo · Menswear', 'Tailored for the modern gentleman.', mfalme.intro, img('groom', 'A groom in a custom gold-accent tuxedo jacket'))}
 <section class="section">
-  <div class="wrap section-head"><p>We believe that what you wear should feel uniquely yours. Through personalised design, careful craftsmanship and attention to detail, we bring your ideas to life, one beautiful outfit at a time.</p></div>
   <div class="wrap grid grid-collections">
-    ${brands
-      .filter((b) => b.id !== 'bridal')
-      .map((b) =>
-        card(
-          `<span class="pill">${esc(b.kicker)}</span><h3>${esc(b.name)}</h3><p>${esc(b.copy)}</p>${wa('fashion', `Hello LoLo Fashion House, I would like to enquire about ${b.name}.`, 'Enquire on WhatsApp')}`,
-          img(b.img, b.name),
-        ),
-      )
-      .join('\n    ')}
+    ${mfalme.offerings.map((o) => card(`<h3>${esc(o.name)}</h3><p>${esc(o.note)}</p>`, img(o.img, o.name))).join('\n    ')}
   </div>
+  <div class="wrap hero-actions">${wa('fashion', 'Hello LoLo Fashion House, I would like to enquire about Mfalme menswear.', 'Enquire on WhatsApp')}</div>
 </section>
 <section class="section section-dark">
-  ${head('Collections', 'Outfits for every occasion.', 'Custom-made around your measurements and personal style.', true)}
-  <div class="wrap grid grid-collections">
-    ${collections.map((c) => card(`<h3>${esc(c.name)}</h3><p>${esc(c.note)}</p>`, img(c.img, c.name))).join('\n    ')}
+  ${head('Mfalme in the field', 'Worn at weddings and ceremonies.', 'Real grooms and guests dressed by Mfalme.', true)}
+  <div class="wrap gallery-grid">
+    ${mfalme.photos.map((n, i) => galleryItem(n + '.jpg', i)).join('\n    ')}
   </div>
-  <div class="wrap hero-actions">${wa('fashion', 'Hello LoLo Fashion House, I would like to book a consultation.', 'Book a consultation')}</div>
+</section>`,
+});
+
+pages['kids.html'] = shell({
+  file: 'kids.html',
+  title: 'LoLo Kids | Girls’ occasion wear',
+  description: 'Beautiful custom outfits for little girls: birthdays, flower girls, weddings and family occasions.',
+  ogImage: 'kids',
+  body: `
+${pageHero('LoLo Kids · Girls’ occasion wear', 'Little moments, beautifully dressed.', kidsInfo.intro, img('kids', 'A little girl in a flower-girl dress'))}
+<section class="section">
+  <div class="wrap grid grid-collections">
+    ${kidsInfo.occasions.map(([t, n]) => card(`<h3>${esc(t)}</h3><p>${esc(n)}</p>`)).join('\n    ')}
+  </div>
+  <div class="wrap hero-actions">${wa('fashion', 'Hello LoLo Fashion House, I would like to enquire about a LoLo Kids outfit.', 'Enquire on WhatsApp')}</div>
 </section>`,
 });
 
@@ -232,7 +248,7 @@ pages['bridal.html'] = shell({
     'Custom wedding gowns, personalised accessories, Before I Do bridal mornings, bridal assistant services and wedding planning.',
   ogImage: 'gown',
   body: `
-${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confidently. Celebrate fully.', 'Your wedding deserves more than beautiful details. It deserves a thoughtful, seamless and memorable experience.', img('gown', 'A bride and groom standing by a lake'))}
+${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confidently. Celebrate fully.', 'Your wedding deserves more than beautiful details. It deserves a thoughtful, seamless and memorable experience.', img('gown', 'A bride and groom in a custom wedding gown on a lawn'))}
 <section class="section">
   ${offeringCards()}
   <div class="wrap hero-actions">${wa('bridal', 'Hello LoLo Bridal, I would like to make an enquiry.', 'Enquire on WhatsApp')}</div>
@@ -242,7 +258,7 @@ ${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confid
   ${head('Before I Do', 'Bridal morning experiences', beforeIDo.intro, true)}
   <div class="wrap grid grid-collections">
     ${beforeIDo.packages.map((p, i) => card(`<span class="pill">${esc(p.price)}</span><h3>${esc(p.name)}</h3>${priceList(p.items)}`, img(['balloons', 'venue', 'champagne'][i], p.name))).join('\n    ')}
-    ${card(`<span class="pill">À la carte</span><h3>Individual items</h3>${priceList(beforeIDo.addons)}`, img('rings', 'Gold wedding rings'))}
+    ${card(`<span class="pill">À la carte</span><h3>Individual items</h3>${priceList(beforeIDo.addons)}`, img('rings', 'A couple in a custom wedding gown and waistcoat'))}
   </div>
   <div class="wrap section-head light">
     <p>${esc(beforeIDo.note)}</p>
@@ -253,7 +269,7 @@ ${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confid
 <section class="section" id="bridal-services">
   ${head('Bridal assistant services', 'The Bridal Guardian Angel', guardianAngel.intro)}
   <div class="wrap grid grid-collections">
-    ${guardianAngel.tiers.map((t, i) => card(`<span class="pill">${esc(t.price)}</span><h3>${esc(t.name)}</h3><ul class="plain-list">${t.points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`, i === 0 ? img('robe', 'A bride in a robe holding a bouquet') : '')).join('\n    ')}
+    ${guardianAngel.tiers.map((t, i) => card(`<span class="pill">${esc(t.price)}</span><h3>${esc(t.name)}</h3><ul class="plain-list">${t.points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`, i === 0 ? img('robe', 'A bride in a custom gown holding a bouquet') : '')).join('\n    ')}
   </div>
   <div class="wrap section-head">
     <p>${esc(guardianAngel.extra)}</p>
@@ -299,7 +315,7 @@ pages['digital.html'] = shell({
     'The Bridal Roadmap, Vendor Matchbook, Bridal Party Playbook and Wedding Masterplanner. Available on Selar.',
   ogImage: 'planner',
   body: `
-${pageHero('LoLo Bridal · Digital products', 'Your wedding. Your vision. Your plan.', 'Thoughtfully designed digital resources to help you make informed decisions, stay organised, work with your vendors and prepare with confidence.', img('planner', 'A planner notebook and a gold watch'))}
+${pageHero('LoLo Bridal · Digital products', 'Your wedding. Your vision. Your plan.', 'Thoughtfully designed digital resources to help you make informed decisions, stay organised, work with your vendors and prepare with confidence.', img('planner', 'A bride in a custom wedding gown holding a bouquet'))}
 <section class="section">
   <div class="wrap grid grid-collections">
     ${digitalProducts
@@ -319,7 +335,7 @@ pages['about.html'] = shell({
   description: 'Since 2017, LoLo Fashion House has created meaningful, beautifully crafted pieces for life’s special moments.',
   ogImage: 'birthday',
   body: `
-${pageHero('About us', 'Thoughtful design. Personal expression. Beautifully made moments.', 'Clothing is more than what we wear. It is an expression of identity, confidence, culture, and personal style.', img('birthday', 'A woman in a yellow dress holding balloons'))}
+${pageHero('About us', 'Thoughtful design. Personal expression. Beautifully made moments.', 'Clothing is more than what we wear. It is an expression of identity, confidence, culture, and personal style.', img('birthday', 'A client in a custom Ankara outfit made by LoLo'))}
 <section class="section">
   <div class="wrap story-grid">
     <div>

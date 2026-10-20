@@ -1,4 +1,5 @@
 {
   "outputDirectory": "site",
-  "cleanUrls": false
+  "cleanUrls": false,
+  "redirects": [{ "source": "/fashion.html", "destination": "/", "permanent": true }]
 }
