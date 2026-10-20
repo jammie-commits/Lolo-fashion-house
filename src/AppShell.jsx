@@ -9,6 +9,7 @@ import {
   loadBootstrap,
   refreshInsight,
 } from './api';
+import fallbackSite from './fallbackSite.json';
 import { AboutSection, BridalPage, ContactCards, DigitalPage, FashionPage, HomeSections } from './ContentPages';
 import { bridalEnquiryTypes, buildEnquiryMessage, tagline, waLink } from './siteContent';
 
@@ -178,7 +179,8 @@ function usePublicSite() {
         ]);
       }
     } catch (error) {
-      setNotice(error.message);
+      // Static hosting has no API; fall back to bundled collections.
+      setSite((current) => current || { collections: fallbackSite.collections, products: [] });
     } finally {
       setLoading(false);
     }
@@ -408,6 +410,7 @@ function HomePage() {
         </div>
       </section>
 
+      {data.featuredProducts.length ? (
       <section className="section section-dark">
         <div className="wrap section-head light">
           <span className="eyebrow light">Products</span>
@@ -442,6 +445,7 @@ function HomePage() {
           ))}
         </div>
       </section>
+      ) : null}
 
       <HomeSections />
 
@@ -549,6 +553,7 @@ function CollectionsPage() {
           ))}
         </div>
       </section>
+      {data.featuredProducts.length ? (
       <section className="section section-dark">
         <div className="wrap section-head light">
           <span className="eyebrow light">Featured products</span>
@@ -582,6 +587,7 @@ function CollectionsPage() {
           ))}
         </div>
       </section>
+      ) : null}
     </>
   );
 }
