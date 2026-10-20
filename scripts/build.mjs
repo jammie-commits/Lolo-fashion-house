@@ -1,4 +1,4 @@
-import { mkdirSync, readdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -137,8 +137,23 @@ const offeringCards = () => `
 const priceList = (rows) =>
   `<ul class="price-list">${rows.map(([l, p]) => `<li><span>${esc(l)}</span><strong>${esc(p)}</strong></li>`).join('')}</ul>`;
 
-const galleryItem = (f, i) =>
-  `<a class="gallery-item" href="/assets/gallery/${f}" data-lightbox><img src="/assets/gallery/${f}" alt="Outfit made by LoLo Fashion House, photo ${i + 1}" loading="lazy" /></a>`;
+const jpegSize = (file) => {
+  const buf = readFileSync(join(out, 'assets/gallery', file));
+  let i = 2;
+  while (i < buf.length) {
+    const marker = buf[i + 1];
+    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+      return { h: buf.readUInt16BE(i + 5), w: buf.readUInt16BE(i + 7) };
+    }
+    i += 2 + buf.readUInt16BE(i + 2);
+  }
+  return { w: 800, h: 1000 };
+};
+
+const galleryItem = (f, i) => {
+  const { w, h } = jpegSize(f);
+  return `<a class="gallery-item" href="/assets/gallery/${f}" data-lightbox><img src="/assets/gallery/${f}" alt="Outfit made by LoLo Fashion House, photo ${i + 1}" width="${w}" height="${h}" loading="lazy" decoding="async" /></a>`;
+};
 
 const pages = {};
 
