@@ -1,4 +1,4 @@
-import { cpSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -20,6 +20,7 @@ import {
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'site');
+const galleryFiles = readdirSync(join(out, 'assets/gallery')).filter((f) => f.endsWith('.jpg')).sort();
 const SITE_URL = 'https://lolo-fashion-house.vercel.app';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -29,6 +30,7 @@ const nav = [
   ['Home', '/'],
   ['Fashion House', '/fashion.html'],
   ['Bridal', '/bridal.html'],
+  ['Gallery', '/gallery.html'],
   ['Digital Products', '/digital.html'],
   ['About', '/about.html'],
   ['Contact', '/contact.html'],
@@ -132,6 +134,9 @@ const offeringCards = () => `
 const priceList = (rows) =>
   `<ul class="price-list">${rows.map(([l, p]) => `<li><span>${esc(l)}</span><strong>${esc(p)}</strong></li>`).join('')}</ul>`;
 
+const galleryItem = (f, i) =>
+  `<a class="gallery-item" href="/assets/gallery/${f}" data-lightbox><img src="/assets/gallery/${f}" alt="Outfit made by LoLo Fashion House, photo ${i + 1}" loading="lazy" /></a>`;
+
 const pages = {};
 
 pages['index.html'] = shell({
@@ -173,6 +178,14 @@ pages['index.html'] = shell({
     <a class="button button-gold" href="/bridal.html">Explore LoLo Bridal</a>
     <a class="button button-ghost" href="/digital.html">Shop digital products</a>
   </div>
+</section>
+
+<section class="section section-dark">
+  ${head('Gallery', 'Moments we’ve dressed.', 'A glimpse of weddings, ruracio ceremonies and celebrations where LoLo outfits took centre stage.', true)}
+  <div class="wrap gallery-strip">
+    ${galleryFiles.slice(0, 6).map((f, i) => galleryItem(f, i)).join('\n    ')}
+  </div>
+  <div class="wrap hero-actions"><a class="button button-gold" href="/gallery.html">View the full gallery</a></div>
 </section>
 
 <section class="section">
@@ -257,6 +270,24 @@ ${pageHero('LoLo Bridal · Weddings & Events', 'Plan beautifully. Prepare confid
   <div class="wrap section-head light">
     <p>${esc(planning.note)}</p>
     ${wa('bridal', 'Hello LoLo Bridal, I would like to enquire about wedding planning and coordination.', 'Request a planning package')}
+  </div>
+</section>`,
+});
+
+pages['gallery.html'] = shell({
+  file: 'gallery.html',
+  title: 'Gallery | Events dressed by LoLo Fashion House',
+  description: 'Real weddings, ruracio ceremonies and celebrations where clients wore outfits crafted by LoLo Fashion House.',
+  ogImage: 'traditional',
+  body: `
+${pageHero('Gallery', 'Moments we’ve dressed.', 'Real events and real clients: wedding gowns, ruracio and traditional wear, bridal parties and groomswear, all crafted by LoLo Fashion House.')}
+<section class="section">
+  <div class="wrap gallery-grid">
+    ${galleryFiles.map((f, i) => galleryItem(f, i)).join('\n    ')}
+  </div>
+  <div class="wrap section-head">
+    <p>Want to look this good at your own event?</p>
+    ${wa('fashion', 'Hello LoLo Fashion House, I saw your gallery and would like a custom outfit.', 'Enquire on WhatsApp')}
   </div>
 </section>`,
 });

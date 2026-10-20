@@ -8,6 +8,42 @@
     });
   }
 
+  const items = [...document.querySelectorAll('[data-lightbox]')];
+  if (items.length) {
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-label', 'Photo viewer');
+    box.innerHTML =
+      '<button class="lb-close" aria-label="Close">×</button><button class="lb-prev" aria-label="Previous">‹</button><img alt="" /><button class="lb-next" aria-label="Next">›</button>';
+    document.body.append(box);
+    const big = box.querySelector('img');
+    let index = 0;
+    const show = (i) => {
+      index = (i + items.length) % items.length;
+      big.src = items[index].href;
+      big.alt = items[index].querySelector('img').alt;
+      box.classList.add('open');
+    };
+    const close = () => box.classList.remove('open');
+    items.forEach((a, i) =>
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        show(i);
+      }),
+    );
+    box.querySelector('.lb-close').addEventListener('click', close);
+    box.querySelector('.lb-prev').addEventListener('click', () => show(index - 1));
+    box.querySelector('.lb-next').addEventListener('click', () => show(index + 1));
+    box.addEventListener('click', (e) => e.target === box && close());
+    document.addEventListener('keydown', (e) => {
+      if (!box.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+  }
+
   const form = document.getElementById('enquiry-form');
   if (!form) return;
 

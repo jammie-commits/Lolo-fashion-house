@@ -15,4 +15,4 @@ A static website (plain HTML, CSS and a little vanilla JS). No framework or runt
 ## Behaviour
 - Enquiry form (`/contact.html`) opens WhatsApp with the details pre-filled: bridal enquiry types go to LoLo Bridal (0740537139), everything else to LoLo Fashion House (0713280731).
 - Digital products link to the Selar store. Add a `url` to an entry in `digitalProducts` for a per-product listing.
-- Photos: the hero, traditional, birthday and red-carpet images are the client's own. The rest (groom, gown, kids, robe, venue, balloons, rings, champagne, planner) are free-to-use Unsplash photos, see the [Unsplash License](https://unsplash.com/license). Replace them with real product photos by overwriting the files in `site/assets/images/`.
+- Photos: the gallery, hero, traditional, birthday, red-carpet, menswear and bridal-gown images are the client's own. The rest (kids, robe, venue, balloons, rings, champagne, planner) are free-to-use Unsplash photos, see the [Unsplash License](https://unsplash.com/license). Gallery photos are in `site/assets/gallery/` (numbered `01.jpg`, `02.jpg`, ...); add or remove files there and run `npm run build`.
