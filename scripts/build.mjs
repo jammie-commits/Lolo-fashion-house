@@ -33,10 +33,11 @@ const SITE_URL = 'https://lolo-fashion-house.vercel.app';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const imgSrc = (name) => `/assets/gallery/${name}`;
-const img = (name, alt) =>
-  name && existsSync(join(galleryDir, name))
-    ? `<img class="card-img" src="${imgSrc(name)}" alt="${esc(alt || altFor(name))}" loading="lazy" />`
-    : '';
+const img = (name, alt) => {
+  if (!name || !existsSync(join(galleryDir, name))) return '';
+  const { w, h } = jpegSize(name);
+  return `<img class="card-img" src="${imgSrc(name)}" alt="${esc(alt || altFor(name))}" width="${w}" height="${h}" loading="lazy" />`;
+};
 
 const nav = [
   ['Home', '/'],
@@ -125,7 +126,7 @@ const shell = ({ file, title, description, body, ogImage = heroes.home.img, extr
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="/assets/styles.css" />
-  <link rel="stylesheet" href="/assets/extras.css" />
+  <link rel="stylesheet" href="/assets/extras.css?v=20261026" />
   <script type="application/ld+json">${JSON.stringify(file === 'index.html' ? orgSchema : [crumbs(file, title), ...extraSchema])}</script>
 </head>
 <body>
@@ -133,8 +134,8 @@ const shell = ({ file, title, description, body, ogImage = heroes.home.img, extr
 <header class="topbar">
   <div class="wrap nav">
     <a class="brand" href="/">
-      <img src="/logo.jpg" alt="LoLo Fashion House" class="brand-logo" />
-      <span class="brand-name">Lolo <em>Fashion House</em></span>
+      <img src="/logo.jpg" alt="LoLo Fashion House logo" class="brand-logo" />
+      <span class="brand-name">LOLO <em>FASHION HOUSE</em></span>
     </a>
     <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">Menu</button>
     <nav id="site-nav">
@@ -216,23 +217,26 @@ const pages = {};
 
 pages['index.html'] = shell({
   file: 'index.html',
-  title: 'LoLo Fashion House | Bespoke Fashion & Bridal Couture',
+  title: 'LoLo Fashion House | Elegance, Tailored to You',
   description:
-    'Discover bespoke gowns, occasion wear, bridal couture, traditional wedding outfits and personalised wedding experiences. Designed in Kenya, delivered worldwide.',
+    'Discover custom-made designs, traditional wedding attire and statement evening gowns from LoLo Fashion House. Every occasion deserves something extraordinary.',
   body: `
 <section class="hero section" id="home">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">${esc(heroes.home.eyebrow)}</span>
-      <h1>${esc(heroes.home.title)}</h1>
-      <p class="brand-statement">Style Your Moments. Celebrate Your Story.</p>
-      <p class="lead">${esc(heroes.home.desc)}</p>
+  <div class="wrap hero-grid homepage-hero">
+    <div class="homepage-hero-copy">
+      <div class="hero-brand-lockup" aria-label="LoLo Fashion House">
+        <img src="/logo.jpg" alt="" width="150" height="150" />
+        <span><strong>LOLO</strong><em>FASHION HOUSE</em></span>
+      </div>
+      <h1>Elegance, Tailored to You.</h1>
+      <p class="hero-subtitle">Every occasion deserves something extraordinary.</p>
+      <p class="lead">At LoLo Fashion House, we bring your vision to life through thoughtfully crafted, custom-made designs that celebrate your individuality. From exquisite traditional wedding attire and statement evening gowns to elegant ensembles for life’s most memorable moments, every piece is designed to make you look and feel exceptional.</p>
       <div class="hero-actions">
-        <a class="button button-gold" href="/fashion.html">Explore Our Collections</a>
-        <a class="button button-ghost" href="/bridal.html">Discover LoLo Bridal</a>
+        <a class="button button-gold" href="/fashion.html">Explore Our Creations</a>
+        ${wa('fashion', 'Hello LoLo Fashion House, I would like to create my dream outfit.', 'Create Your Dream Outfit', true)}
       </div>
     </div>
-    <div class="hero-panel hero-photo">${img(heroes.home.img, heroes.home.alt).replace('loading="lazy"', 'fetchpriority="high"')}</div>
+    <div class="hero-panel hero-photo homepage-hero-photo">${img(heroes.home.img, heroes.home.alt).replace('loading="lazy"', 'loading="eager" fetchpriority="high"')}</div>
   </div>
 </section>
 

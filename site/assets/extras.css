@@ -387,3 +387,225 @@ textarea:focus-visible {
 [id] {
   scroll-margin-top: 96px;
 }
+
+.nav {
+  min-height: 98px;
+  gap: 24px;
+}
+
+.nav nav {
+  gap: clamp(10px, 1.2vw, 18px);
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.brand {
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  width: 72px;
+  height: 72px;
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+}
+
+.brand-name em {
+  font-family: var(--body);
+  font-size: 0.7rem;
+  font-style: normal;
+  letter-spacing: 0.2em;
+}
+
+.homepage-hero {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: clamp(34px, 6vw, 80px);
+  align-items: center;
+}
+
+.homepage-hero-copy {
+  min-width: 0;
+}
+
+.hero-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.hero-brand-lockup img {
+  display: block;
+  width: clamp(88px, 11vw, 132px);
+  height: auto;
+  flex: 0 0 auto;
+}
+
+.hero-brand-lockup span {
+  display: grid;
+  color: var(--espresso);
+  line-height: 0.92;
+}
+
+.hero-brand-lockup strong {
+  font-family: var(--display);
+  font-size: clamp(3.2rem, 6.4vw, 5.6rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+}
+
+.hero-brand-lockup em {
+  margin-top: 8px;
+  font-family: var(--body);
+  font-size: clamp(0.72rem, 1.1vw, 0.96rem);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.27em;
+}
+
+.homepage-hero h1 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(3.15rem, 5.8vw, 5.2rem);
+  line-height: 0.98;
+}
+
+.hero-subtitle {
+  margin: 20px 0 0;
+  color: var(--gold-deep);
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+  line-height: 1.2;
+}
+
+.homepage-hero .lead {
+  max-width: 54ch;
+  margin: 18px 0 0;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.homepage-hero .hero-actions {
+  margin-top: 28px;
+}
+
+.homepage-hero .button {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 24px;
+}
+
+.homepage-hero .button-gold {
+  border-color: var(--espresso);
+}
+
+.homepage-hero .button-ghost {
+  border-color: rgba(57, 44, 41, 0.42);
+  background: transparent;
+}
+
+.homepage-hero .button-ghost:hover {
+  border-color: var(--espresso);
+}
+
+.homepage-hero-photo {
+  width: 100%;
+  max-width: 620px;
+  justify-self: end;
+  padding: 0;
+}
+
+.homepage-hero-photo .card-img {
+  width: 100%;
+  height: auto;
+  max-height: 780px;
+  margin: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 1080px) {
+  .nav {
+    min-height: 88px;
+  }
+
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .nav nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0 20px;
+  }
+
+  .nav nav.open {
+    display: flex;
+  }
+}
+
+@media (max-width: 900px) {
+  .homepage-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .homepage-hero-photo {
+    max-width: 640px;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+  }
+
+  .brand-name em {
+    font-size: 0.62rem;
+  }
+
+  .hero-brand-lockup {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .hero-brand-lockup img {
+    width: 78px;
+  }
+
+  .hero-brand-lockup strong {
+    font-size: clamp(2.8rem, 13vw, 4rem);
+  }
+
+  .hero-brand-lockup em {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+  }
+
+  .homepage-hero h1 {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .homepage-hero .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .homepage-hero .button {
+    width: 100%;
+  }
+}
