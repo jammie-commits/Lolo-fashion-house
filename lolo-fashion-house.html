@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoLo Fashion House — Where We Design Your Dreams</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Jost:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --ink:#1B1512;
+  --ink-soft:#2A211C;
+  --cream:#F6EFE4;
+  --cream-soft:#FBF6EE;
+  --gold:#C6A15B;
+  --gold-bright:#E3C888;
+  --gold-deep:#8B6F32;
+  --wine:#5C1A2B;
+  --wine-soft:#7A2438;
+  --line:rgba(198,161,91,0.28);
+  --font-display:'Fraunces', serif;
+  --font-body:'Jost', sans-serif;
+  --maxw:1180px;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{display:block; max-width:100%;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+.eyebrow{
+  font-family:var(--font-body); font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+  font-size:12px; color:var(--gold-deep);
+}
+h1,h2,h3{font-family:var(--font-display); font-weight:600; line-height:1.08; color:var(--ink);}
+.serif-italic{font-style:italic; font-weight:500;}
+:focus-visible{outline:2px solid var(--wine); outline-offset:3px;}
+
+/* ---------- thread divider signature element ---------- */
+.thread{width:100%; height:34px; overflow:visible;}
+.thread path{
+  stroke:var(--gold); stroke-width:1.6; fill:none;
+  stroke-dasharray:9 7;
+  stroke-dashoffset:600;
+  transition:stroke-dashoffset 1.6s ease;
+}
+.thread.stitched path{stroke-dashoffset:0;}
+.thread circle{fill:var(--gold);}
+
+/* ---------- nav ---------- */
+header{
+  position:sticky; top:0; z-index:100;
+  background:rgba(246,239,228,0.86); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+nav{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:var(--maxw); margin:0 auto;}
+.brand{display:flex; align-items:center; gap:9px; font-family:var(--font-display); font-size:22px; font-weight:700; letter-spacing:.02em;}
+.brand svg{width:20px; height:20px;}
+.navlinks{display:flex; gap:30px; font-size:14.5px; font-weight:500;}
+.navlinks a{position:relative; padding-bottom:4px;}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--gold);transition:width .25s ease;}
+.navlinks a:hover::after{width:100%;}
+.nav-cta{
+  background:var(--wine); color:var(--cream-soft); padding:10px 20px; border-radius:2px;
+  font-size:13.5px; font-weight:600; letter-spacing:.03em; border:1px solid var(--wine);
+  transition:background .2s ease, color .2s ease;
+}
+.nav-cta:hover{background:transparent; color:var(--wine);}
+.hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none;}
+.hamburger span{width:22px; height:2px; background:var(--ink);}
+.mobile-menu{display:none; flex-direction:column; gap:0; background:var(--cream-soft); border-top:1px solid var(--line);}
+.mobile-menu a{padding:14px 28px; border-bottom:1px solid var(--line); font-size:15px;}
+.mobile-menu.open{display:flex;}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative; background:var(--ink); color:var(--cream);
+  padding:100px 28px 70px; overflow:hidden;
+}
+.hero::before{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 82% 18%, rgba(198,161,91,0.16), transparent 55%),
+             radial-gradient(circle at 10% 90%, rgba(92,26,43,0.35), transparent 50%);
+  pointer-events:none;
+}
+.hero-inner{max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:1.1fr .9fr; gap:50px; align-items:center; position:relative;}
+.hero .eyebrow{color:var(--gold-bright);}
+.hero h1{font-size:clamp(38px,5vw,64px); margin:16px 0 22px; color:var(--cream-soft);}
+.hero p.lede{font-size:17px; color:rgba(246,239,228,0.78); max-width:46ch; margin-bottom:32px;}
+.hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:14px 26px; font-size:14px; font-weight:600;
+  letter-spacing:.03em; border-radius:2px; transition:all .22s ease; border:1px solid transparent;
+}
+.btn-gold{background:var(--gold); color:var(--ink);}
+.btn-gold:hover{background:var(--gold-bright);}
+.btn-outline{border-color:rgba(246,239,228,0.5); color:var(--cream-soft);}
+.btn-outline:hover{border-color:var(--gold); color:var(--gold-bright);}
+.hero-art{position:relative; display:flex; align-items:center; justify-content:center;}
+.hero-art svg{width:100%; max-width:340px;}
+
+/* marquee */
+.marquee{background:var(--wine); color:var(--cream-soft); overflow:hidden; white-space:nowrap; padding:14px 0; border-top:1px solid var(--gold-deep); border-bottom:1px solid var(--gold-deep);}
+.marquee-track{display:inline-block; animation:scroll 32s linear infinite;}
+.marquee-track span{font-family:var(--font-display); font-style:italic; font-size:15px; letter-spacing:.04em; margin:0 26px; opacity:.92;}
+.marquee-track span::after{content:'✦'; margin-left:26px; color:var(--gold-bright); font-style:normal;}
+@keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+/* ---------- section shell ---------- */
+section{padding:90px 28px;}
+.section-head{max-width:640px; margin-bottom:50px;}
+.section-head h2{font-size:clamp(28px,3.4vw,42px); margin-top:12px;}
+.section-head p{margin-top:14px; color:var(--ink-soft); font-size:15.5px; max-width:52ch;}
+
+/* our story */
+.story{background:var(--cream-soft);}
+.story-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+.story-copy p{margin-bottom:16px; color:var(--ink-soft); font-size:15.5px;}
+.timeline{display:flex; flex-direction:column; gap:0; border-left:1.5px dashed var(--gold);  padding-left:28px;}
+.timeline-item{position:relative; padding-bottom:34px;}
+.timeline-item:last-child{padding-bottom:0;}
+.timeline-item::before{content:''; position:absolute; left:-33.5px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--wine); border:2px solid var(--gold);}
+.timeline-item .eyebrow{margin-bottom:6px; display:block;}
+.timeline-item h3{font-size:19px; margin-bottom:6px;}
+.timeline-item p{color:var(--ink-soft); font-size:14.5px;}
+
+/* collections */
+.collections-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+.card{
+  background:var(--cream-soft); border:1px solid var(--line); border-radius:3px; padding:28px 24px;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card:hover{transform:translateY(-4px); box-shadow:0 18px 34px rgba(27,21,18,0.08); border-color:var(--gold);}
+.card .icon{width:52px; height:52px; margin-bottom:16px;}
+.card .icon svg{width:100%; height:100%;}
+.card h3{font-size:19px; margin-bottom:8px;}
+.card p{font-size:14px; color:var(--ink-soft); margin-bottom:14px;}
+.tag{display:inline-block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; color:var(--gold-deep); border:1px solid var(--gold); padding:4px 10px; border-radius:20px;}
+
+/* ---------- AI concierge ---------- */
+.concierge{background:var(--ink); color:var(--cream-soft); position:relative;}
+.concierge::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 10%, rgba(198,161,91,0.14), transparent 50%);pointer-events:none;}
+.concierge .eyebrow{color:var(--gold-bright);}
+.concierge .section-head h2{color:var(--cream-soft);}
+.concierge .section-head p{color:rgba(246,239,228,0.72);}
+.tabs{display:flex; gap:10px; margin-bottom:30px; flex-wrap:wrap; position:relative;}
+.tab-btn{
+  padding:11px 20px; border-radius:30px; border:1px solid rgba(246,239,228,0.28);
+  background:transparent; color:rgba(246,239,228,0.8); font-size:13.5px; font-weight:500; letter-spacing:.02em;
+  transition:all .2s ease;
+}
+.tab-btn.active{background:var(--gold); border-color:var(--gold); color:var(--ink); font-weight:600;}
+.panel{display:none; position:relative;}
+.panel.active{display:block; animation:fadeUp .4s ease;}
+@keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+
+.ai-card{
+  background:var(--ink-soft); border:1px solid rgba(198,161,91,0.25); border-radius:6px; padding:26px; max-width:760px;
+}
+
+/* chat */
+.chat-log{max-height:340px; overflow-y:auto; display:flex; flex-direction:column; gap:12px; margin-bottom:16px; padding-right:6px;}
+.chat-log::-webkit-scrollbar{width:6px;} .chat-log::-webkit-scrollbar-thumb{background:var(--gold-deep); border-radius:6px;}
+.msg{padding:12px 16px; border-radius:8px; font-size:14.5px; max-width:85%; line-height:1.5;}
+.msg.user{align-self:flex-end; background:var(--gold); color:var(--ink);}
+.msg.ai{align-self:flex-start; background:rgba(246,239,228,0.08); color:var(--cream-soft); border:1px solid rgba(198,161,91,0.2);}
+.msg.ai.loading{opacity:.6; font-style:italic;}
+.chat-input-row{display:flex; gap:10px;}
+.chat-input-row input{
+  flex:1; background:rgba(246,239,228,0.06); border:1px solid rgba(198,161,91,0.3); color:var(--cream-soft);
+  padding:13px 16px; border-radius:6px; font-size:14.5px; font-family:inherit;
+}
+.chat-input-row input::placeholder{color:rgba(246,239,228,0.4);}
+.chat-input-row button{background:var(--gold); color:var(--ink); border:none; padding:0 22px; border-radius:6px; font-weight:600; font-size:14px;}
+.chat-suggestions{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+.chip{font-size:12.5px; padding:7px 13px; border-radius:20px; background:rgba(198,161,91,0.12); border:1px solid rgba(198,161,91,0.3); color:var(--gold-bright);}
+.chip:hover{background:rgba(198,161,91,0.22);}
+
+/* upload */
+.upload-zone{
+  border:1.5px dashed rgba(198,161,91,0.4); border-radius:8px; padding:36px 20px; text-align:center;
+  cursor:pointer; transition:border-color .2s ease, background .2s ease;
+}
+.upload-zone:hover{border-color:var(--gold); background:rgba(198,161,91,0.05);}
+.upload-zone svg{width:38px; height:38px; margin:0 auto 12px; opacity:.8;}
+.upload-zone p{font-size:14px; color:rgba(246,239,228,0.7);}
+.upload-zone strong{color:var(--gold-bright);}
+#fileInput{display:none;}
+.preview-row{display:flex; gap:16px; align-items:center; margin-top:18px;}
+.preview-row img{width:96px; height:96px; object-fit:cover; border-radius:6px; border:1px solid var(--gold);}
+.match-result{margin-top:22px; display:none;}
+.match-result.show{display:block; animation:fadeUp .4s ease;}
+.match-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:16px 0;}
+.match-field{background:rgba(246,239,228,0.06); border:1px solid rgba(198,161,91,0.2); border-radius:6px; padding:14px;}
+.match-field .label{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-bright); font-weight:600; margin-bottom:5px;}
+.match-field .value{font-size:14.5px; color:var(--cream-soft);}
+
+/* insight */
+.insight-card{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;}
+.insight-text{font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--gold-bright); max-width:58ch; line-height:1.5;}
+.icon-btn{
+  background:transparent; border:1px solid rgba(198,161,91,0.4); color:var(--gold-bright);
+  padding:10px 18px; border-radius:6px; font-size:13px; font-weight:600; white-space:nowrap;
+  display:flex; align-items:center; gap:8px;
+}
+.icon-btn:hover{background:rgba(198,161,91,0.12);}
+.spin{animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.insight-meta{font-size:12px; color:rgba(246,239,228,0.5); margin-top:16px;}
+
+/* booking */
+.booking{background:var(--cream-soft);}
+.form-card{background:var(--cream); border:1px solid var(--line); border-radius:8px; padding:38px; max-width:760px;}
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.field{display:flex; flex-direction:column; gap:6px; margin-bottom:18px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:12.5px; font-weight:600; letter-spacing:.03em; color:var(--ink-soft); text-transform:uppercase;}
+.field input, .field select, .field textarea{
+  border:1px solid rgba(27,21,18,0.18); background:var(--cream-soft); padding:12px 14px; border-radius:5px;
+  font-family:inherit; font-size:14.5px; color:var(--ink); resize:vertical;
+}
+.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--wine);}
+.form-note{font-size:13px; color:var(--gold-deep); background:rgba(198,161,91,0.1); border:1px solid var(--gold); padding:12px 16px; border-radius:6px; margin-bottom:22px; display:none;}
+.form-note.show{display:block;}
+.submit-btn{background:var(--wine); color:var(--cream-soft); border:none; padding:15px 34px; border-radius:5px; font-weight:600; font-size:14.5px; letter-spacing:.02em;}
+.submit-btn:hover{background:var(--wine-soft);}
+.success-panel{display:none; text-align:center; padding:30px 10px;}
+.success-panel.show{display:block; animation:fadeUp .4s ease;}
+.success-panel svg{width:48px; height:48px; margin:0 auto 14px;}
+.success-panel h3{margin-bottom:8px;}
+.success-panel p{color:var(--ink-soft); font-size:14.5px;}
+
+/* testimonials */
+.testimonials-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+.t-card{background:var(--cream-soft); border:1px solid var(--line); padding:26px; border-radius:4px; position:relative;}
+.t-card::before{content:'"'; font-family:var(--font-display); font-size:52px; color:var(--gold); position:absolute; top:6px; left:16px; opacity:.5;}
+.t-card p{font-size:14.5px; color:var(--ink-soft); margin:20px 0 16px; font-style:italic;}
+.t-card .who{font-size:12.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--gold-deep);}
+.demo-note{font-size:12px; color:var(--ink-soft); opacity:.6; margin-top:20px; text-align:center;}
+
+/* footer */
+footer{background:var(--ink); color:rgba(246,239,228,0.75); padding:60px 28px 26px;}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; max-width:var(--maxw); margin:0 auto 40px;}
+.footer-brand{display:flex; align-items:center; gap:9px; font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--cream-soft); margin-bottom:14px;}
+.footer-brand svg{width:20px; height:20px;}
+.footer-grid p{font-size:14px; line-height:1.6;}
+.footer-col h4{font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-bright); margin-bottom:14px;}
+.footer-col a{display:block; font-size:14px; margin-bottom:10px; color:rgba(246,239,228,0.75);}
+.footer-col a:hover{color:var(--gold-bright);}
+.footer-bottom{border-top:1px solid rgba(198,161,91,0.2); max-width:var(--maxw); margin:0 auto; padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; color:rgba(246,239,228,0.5);}
+
+/* toast */
+.toast{
+  position:fixed; bottom:26px; right:26px; max-width:320px; background:var(--ink); color:var(--cream-soft);
+  border:1px solid var(--gold); border-radius:8px; padding:18px 20px; box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  transform:translateY(140%); transition:transform .5s cubic-bezier(.22,1,.36,1); z-index:200;
+}
+.toast.show{transform:translateY(0);}
+.toast .t-eyebrow{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-bright); font-weight:600; margin-bottom:6px;}
+.toast p{font-size:13.5px; line-height:1.45; margin-bottom:12px;}
+.toast-actions{display:flex; gap:10px;}
+.toast-actions button{font-size:12.5px; font-weight:600; padding:7px 14px; border-radius:20px;}
+.toast-actions .go{background:var(--gold); color:var(--ink); border:none;}
+.toast-actions .dismiss{background:transparent; color:rgba(246,239,228,0.6); border:1px solid rgba(246,239,228,0.3);}
+
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-art{order:-1;}
+  .story-grid, .collections-grid, .testimonials-grid{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  .navlinks, .nav-cta{display:none;}
+  .hamburger{display:flex;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header>
+  <nav>
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 8l3.5 3L12 5l5.5 6L21 8l-2 11H5L3 8z" stroke="#C6A15B" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      LoLo <span class="serif-italic" style="color:var(--gold-deep)">Fashion House</span>
+    </div>
+    <div class="navlinks">
+      <a href="#collections">Collections</a>
+      <a href="#story">Our Story</a>
+      <a href="#concierge">AI Style Concierge</a>
+      <a href="#booking">Book a Fitting</a>
+    </div>
+    <a href="#booking" class="nav-cta">Book a Fitting</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#collections">Collections</a>
+    <a href="#story">Our Story</a>
+    <a href="#concierge">AI Style Concierge</a>
+    <a href="#booking">Book a Fitting</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" style="padding-top:100px;">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">lolo Fashion House · Nairobi, Kenya</span>
+      <h1>Where we design<br><span class="serif-italic" style="color:var(--gold-bright)">your dreams.</span></h1>
+      <p class="lede">Wedding gowns, ruracio wear, ankara, senator suits and bridesmaid style — cut, beaded and finished by hand for the biggest days of your life. We dress you, wherever in the world you are.</p>
+      <div class="hero-ctas">
+        <a href="#booking" class="btn btn-gold">Book a Fitting</a>
+        <a href="#concierge" class="btn btn-outline">Meet Your Style Concierge</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 300 380" fill="none">
+        <path d="M150 30c-14 0-24 12-24 26 0 10 5 17 5 17s-46 14-52 70c-4 34 8 60 8 60l-15 150h156l-15-150s12-26 8-60c-6-56-52-70-52-70s5-7 5-17c0-14-10-26-24-26z" stroke="#C6A15B" stroke-width="1.3"/>
+        <path d="M104 143c10 30 6 60 0 90M196 143c-10 30-6 60 0 90" stroke="#C6A15B" stroke-width="1" stroke-dasharray="3 6"/>
+        <circle cx="150" cy="56" r="4" fill="#C6A15B"/>
+        <path d="M150 60v30" stroke="#C6A15B" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"><div class="marquee-track">
+  <span>WEDDING GOWNS</span><span>RURACIO &amp; TRADITIONAL WEAR</span><span>ANKARA &amp; KITENGE</span><span>SENATOR SUITS</span><span>BRIDESMAID DRESSES</span><span>KAFTANS</span>
+  <span>WEDDING GOWNS</span><span>RURACIO &amp; TRADITIONAL WEAR</span><span>ANKARA &amp; KITENGE</span><span>SENATOR SUITS</span><span>BRIDESMAID DRESSES</span><span>KAFTANS</span>
+</div></div>
+
+<!-- ================= OUR STORY ================= -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our Story</span>
+      <h2>From a sewing machine in the sitting room to a full atelier floor.</h2>
+    </div>
+    <div class="story-grid">
+      <div class="story-copy">
+        <p>LoLo Fashion House started small — one seamstress, one machine, and a growing list of neighbours and family asking for one more dress, one more suit. Every piece was cut, fitted and finished by hand.</p>
+        <p>That same care now runs through a full production house. We still measure, cut and bead every garment ourselves — we've just gotten better at doing it for more people, more ceremonies, and more countries.</p>
+        <p>Today we dress entire bridal parties for weddings and ruracio ceremonies across Kenya, and ship completed, made-to-measure pieces to clients in the diaspora.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="eyebrow">The Beginning</span>
+          <h3>One machine, made to order</h3>
+          <p>Custom pieces sewn by hand for family, friends, and word-of-mouth clients — the start of a reputation built on fit and finish.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="eyebrow">Growing the Craft</span>
+          <h3>A full bridal &amp; occasion-wear house</h3>
+          <p>Wedding gowns, ruracio sets, ankara, senator suits and bridesmaid dresses, each made to individual measurements.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="eyebrow">Today</span>
+          <h3>Worldwide delivery, hand-finished as ever</h3>
+          <p>An atelier and production floor dressing clients in Kenya and the diaspora — no stress, no uncertainty, custom-made either way.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="thread" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 17 Q 60 2, 120 17 T 240 17 T 360 17 T 480 17 T 600 17 T 720 17 T 840 17 T 960 17 T 1080 17 T 1180 17"/></svg>
+
+<!-- ================= COLLECTIONS ================= -->
+<section id="collections">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Collections</span>
+      <h2>Six ways we dress your day</h2>
+      <p>Every piece is made to your measurements — nothing here is off the rack.</p>
+    </div>
+    <div class="collections-grid">
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 52 52" fill="none"><path d="M26 6c-6 0-9 5-9 9 0 3 2 5 2 5s-14 5-16 22h46c-2-17-16-22-16-22s2-2 2-5c0-4-3-9-9-9z" stroke="#8B6F32" stroke-width="1.3"/></svg></div>
+        <h3>Wedding Gowns</h3>
+        <p>Beaded lace, mermaid silhouettes, ball gowns and minimalist crepe — designed around your shape and your day.</p>
+        <span class="tag">Made to measure</span>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 52 52" fill="none"><path d="M16 10l10 8 10-8M10 46l6-24h20l6 24" stroke="#8B6F32" stroke-width="1.3" stroke-linejoin="round"/><circle cx="26" cy="14" r="4" stroke="#8B6F32" stroke-width="1.3"/></svg></div>
+        <h3>Ruracio &amp; Traditional Wear</h3>
+        <p>Golden, celebratory sets for dowry ceremonies — statement colour, structure and beadwork for the whole party.</p>
+        <span class="tag">Bridal party sets</span>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 52 52" fill="none"><rect x="12" y="10" width="28" height="32" rx="2" stroke="#8B6F32" stroke-width="1.3"/><path d="M12 18h28M12 26h28M12 34h28" stroke="#8B6F32" stroke-width="1"/></svg></div>
+        <h3>Ankara &amp; Kitenge</h3>
+        <p>Bold print tailoring — dresses, two-piece sets and accessories cut from vibrant West and East African fabric.</p>
+        <span class="tag">Print &amp; pattern</span>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 52 52" fill="none"><path d="M18 12v-2h16v2M14 46l4-30h16l4 30M26 12v34" stroke="#8B6F32" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
+        <h3>Senator Suits &amp; Menswear</h3>
+        <p>Sharp senator suits, agbada and groomswear — structured, breathable, and finished with hand-set detail.</p>
+        <span class="tag">Groom &amp; groomsmen</span>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 52 52" fill="none"><path d="M26 8c-8 2-12 8-12 8s12 6 12 20c0-14 12-20 12-20s-4-6-12-8z" stroke="#8B6F32" stroke-width="1.3"/></svg></div>
+        <h3>Bridesmaid Dresses</h3>
+        <p>Colour-matched, figure-considered dresses so your whole bridal party feels as good as it looks in photos.</p>
+        <span class="tag">Party matching</span>
+      </div>
+
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 52 52" fill="none"><path d="M12 18c0-6 6-10 14-10s14 4 14 10v22H12V18z" stroke="#8B6F32" stroke-width="1.3"/><path d="M12 26h28" stroke="#8B6F32" stroke-width="1"/></svg></div>
+        <h3>Kaftans</h3>
+        <p>Our newest line — relaxed, flowing silhouettes in rich fabric for guests, gifting, and everyday occasion wear.</p>
+        <span class="tag">New arrival</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<svg class="thread" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 17 Q 60 32, 120 17 T 240 17 T 360 17 T 480 17 T 600 17 T 720 17 T 840 17 T 960 17 T 1080 17 T 1180 17"/></svg>
+
+<!-- ================= AI CONCIERGE ================= -->
+<section class="concierge" id="concierge">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">AI Style Concierge</span>
+      <h2>Your dream design, matched and made</h2>
+      <p>Ask a question, upload a photo that caught your eye, or check today's style insight — before you ever set foot in the atelier.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="chat">Ask a Question</button>
+      <button class="tab-btn" data-tab="upload">Show Us Your Inspiration</button>
+      <button class="tab-btn" data-tab="insight">Today's Style Insight</button>
+    </div>
+
+    <!-- CHAT PANEL -->
+    <div class="panel active" id="panel-chat">
+      <div class="ai-card">
+        <div class="chat-log" id="chatLog">
+          <div class="msg ai">Hi, I'm the LoLo Style Concierge. Ask me about fabric, fit, timelines, or which collection suits your event — I know our full range of wedding, ruracio, ankara, suit, bridesmaid and kaftan work.</div>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="e.g. What fabric works best for a Nairobi outdoor ruracio?" />
+          <button id="chatSend">Ask</button>
+        </div>
+        <div class="chat-suggestions">
+          <button class="chip" data-q="What's the typical timeline for a custom wedding gown?">Timeline for a wedding gown?</button>
+          <button class="chip" data-q="What should bridesmaids wear for an outdoor Nairobi wedding?">Outdoor bridesmaid style?</button>
+          <button class="chip" data-q="Can you explain the difference between ankara and kitenge?">Ankara vs kitenge?</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPLOAD PANEL -->
+    <div class="panel" id="panel-upload">
+      <div class="ai-card">
+        <div class="upload-zone" id="uploadZone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C6A15B" stroke-width="1.4"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>
+          <p><strong>Upload an inspiration photo</strong><br>A gown, an outfit, a Pinterest save — we'll match it to a LoLo collection.</p>
+        </div>
+        <input type="file" id="fileInput" accept="image/*" />
+        <div class="preview-row" id="previewRow" style="display:none;">
+          <img id="previewImg" alt="Uploaded inspiration preview" />
+          <div>
+            <button class="icon-btn" id="analyzeBtn">Analyze this design</button>
+          </div>
+        </div>
+        <div class="match-result" id="matchResult">
+          <div class="eyebrow">Style Match</div>
+          <div class="match-grid">
+            <div class="match-field"><div class="label">Silhouette</div><div class="value" id="mSilhouette">—</div></div>
+            <div class="match-field"><div class="label">Fabric guess</div><div class="value" id="mFabric">—</div></div>
+            <div class="match-field"><div class="label">Best-fit collection</div><div class="value" id="mCollection">—</div></div>
+            <div class="match-field"><div class="label">Styling tip</div><div class="value" id="mTip">—</div></div>
+          </div>
+          <button class="icon-btn" id="useMatchBtn" style="background:var(--gold); color:var(--ink); border:none;">Use this in my booking request →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSIGHT PANEL -->
+    <div class="panel" id="panel-insight">
+      <div class="ai-card">
+        <div class="insight-card">
+          <div>
+            <div class="eyebrow" style="margin-bottom:10px;">New Advancement</div>
+            <div class="insight-text" id="insightText">Loading today's style insight…</div>
+            <div class="insight-meta" id="insightMeta"></div>
+          </div>
+          <button class="icon-btn" id="insightBtn">
+            <svg id="insightIcon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2v6h-6M3 22v-6h6M3.5 9a9 9 0 0114.5-4.5L21 8M20.5 15a9 9 0 01-14.5 4.5L3 16"/></svg>
+            New insight
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<svg class="thread" viewBox="0 0 1180 34" preserveAspectRatio="none"><path d="M0 17 Q 60 2, 120 17 T 240 17 T 360 17 T 480 17 T 600 17 T 720 17 T 840 17 T 960 17 T 1080 17 T 1180 17"/></svg>
+
+<!-- ================= BOOKING ================= -->
+<section class="booking" id="booking">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Book a Fitting</span>
+      <h2>Tell us about your day</h2>
+      <p>Send your details and we'll reach out on WhatsApp or email to schedule measurements and discuss fabric.</p>
+    </div>
+
+    <div class="form-card">
+      <form id="bookingForm">
+        <div class="form-note" id="formNote">✨ Style match added from your uploaded inspiration — details filled in below.</div>
+        <div class="form-grid">
+          <div class="field"><label for="fName">Full name</label><input type="text" id="fName" required /></div>
+          <div class="field"><label for="fPhone">WhatsApp / Phone</label><input type="tel" id="fPhone" required /></div>
+          <div class="field"><label for="fEmail">Email</label><input type="email" id="fEmail" /></div>
+          <div class="field"><label for="fEvent">Event type</label>
+            <select id="fEvent">
+              <option>Wedding Gown</option>
+              <option>Ruracio / Traditional Wear</option>
+              <option>Ankara / Kitenge</option>
+              <option>Senator Suit / Menswear</option>
+              <option>Bridesmaid Dresses</option>
+              <option>Kaftan</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label for="fDate">Event date</label><input type="date" id="fDate" /></div>
+          <div class="field"><label for="fLocation">Delivery location</label><input type="text" id="fLocation" placeholder="Nairobi, or diaspora city" /></div>
+          <div class="field full"><label for="fMessage">Tell us about the design</label><textarea id="fMessage" rows="4" placeholder="Describe the look, colours, or paste your AI style match here"></textarea></div>
+        </div>
+        <button type="submit" class="submit-btn">Send my request</button>
+      </form>
+
+      <div class="success-panel" id="successPanel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5C1A2B" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+        <h3>Request received</h3>
+        <p>Thank you — a member of the LoLo team will reach out on WhatsApp within 24 hours to confirm your fitting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Kind Words</span>
+      <h2>What it feels like to wear LoLo</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="t-card"><p>Our outfits spoke before we even opened our mouths — the whole bridal party felt like royalty.</p><div class="who">Bride, Nairobi</div></div>
+      <div class="t-card"><p>Ordered from abroad with no fittings in person and everything still arrived fitting perfectly.</p><div class="who">Diaspora order, worldwide delivery</div></div>
+      <div class="t-card"><p>Our ruracio sets matched down to the beadwork — every photo looked intentional.</p><div class="who">Bridesmaid party, Ruracio ceremony</div></div>
+    </div>
+    <p class="demo-note">Sample testimonials shown for design purposes — swap in real client quotes before launch.</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 8l3.5 3L12 5l5.5 6L21 8l-2 11H5L3 8z" stroke="#C6A15B" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        LoLo Fashion House
+      </div>
+      <p>lolo wedding, ruracio, ankara, menswear and bridesmaid design — hand-cut and finished in Nairobi, delivered worldwide.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#collections">Collections</a>
+      <a href="#story">Our Story</a>
+      <a href="#concierge">AI Style Concierge</a>
+      <a href="#booking">Book a Fitting</a>
+    </div>
+    <div class="footer-col">
+      <h4>Follow &amp; Contact</h4>
+      <a href="https://www.instagram.com/lolo_fashionhouse/" target="_blank" rel="noopener">Instagram · @lolo_fashionhouse</a>
+      <a href="https://www.facebook.com/LoloFashionHouse/" target="_blank" rel="noopener">Facebook · LoLo Fashion House</a>
+      <a href="https://www.threads.com/@lolo_fashionhouse" target="_blank" rel="noopener">Threads · @lolo_fashionhouse</a>
+      <a href="#booking">Worldwide delivery — Kenya &amp; Diaspora</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 LoLo Fashion House. Where we design your dreams.</span>
+    <span>Concept site with AI Style Concierge</span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="t-eyebrow">New Arrival</div>
+  <p id="toastText">Our Kaftan collection just dropped — flowing silhouettes in rich fabric, made to your measurements.</p>
+  <div class="toast-actions">
+    <button class="go" id="toastGo">Ask the Concierge</button>
+    <button class="dismiss" id="toastDismiss">Dismiss</button>
+  </div>
+</div>
+
+<script>
+/* ---------------- shared Claude API caller ---------------- */
+async function callClaude(payloadMessages, system){
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-6",
+      max_tokens: 1000,
+      system: system || undefined,
+      messages: payloadMessages
+    })
+  });
+  const data = await res.json();
+  const text = (data.content || []).map(b => b.text || "").join("\n").trim();
+  return text;
+}
+
+const BRAND_SYSTEM = `You are the LoLo Style Concierge, the in-house style advisor for LoLo Fashion House, a lolo fashion house based in Nairobi, Kenya that hand-makes wedding gowns, ruracio and traditional ceremony wear, ankara and kitenge pieces, senator suits and groomswear, bridesmaid dresses, and kaftans, and ships worldwide to clients in Kenya and the diaspora. Everything is made to individual measurements, nothing is off the rack. Answer questions warmly and specifically, in 2-4 short sentences, staying grounded in these six collections and general lolo-fashion knowledge (fabric, fit, timelines, climate-appropriate styling). If asked something totally unrelated to fashion or the business, gently redirect back to how you can help with their outfit.`;
+
+/* ---------------- mobile menu ---------------- */
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.remove('open');
+}));
+
+/* ---------------- thread divider draw-on-scroll ---------------- */
+const threads = document.querySelectorAll('.thread');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('stitched'); });
+}, {threshold:0.4});
+threads.forEach(t => io.observe(t));
+
+/* ---------------- tabs ---------------- */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ---------------- chat ---------------- */
+const chatLog = document.getElementById('chatLog');
+const chatHistory = [];
+function addMsg(role, text, loading=false){
+  const div = document.createElement('div');
+  div.className = 'msg ' + (role === 'user' ? 'user' : 'ai') + (loading ? ' loading' : '');
+  div.textContent = text;
+  chatLog.appendChild(div);
+  chatLog.scrollTop = chatLog.scrollHeight;
+  return div;
+}
+async function sendChat(text){
+  if(!text.trim()) return;
+  addMsg('user', text);
+  chatHistory.push({role:'user', content:text});
+  const loadingEl = addMsg('ai', 'Thinking…', true);
+  try{
+    const reply = await callClaude(chatHistory, BRAND_SYSTEM);
+    chatHistory.push({role:'assistant', content:reply});
+    loadingEl.textContent = reply || "I couldn't quite catch that — could you rephrase?";
+    loadingEl.classList.remove('loading');
+  }catch(err){
+    loadingEl.textContent = "The concierge is momentarily unavailable — please try again shortly, or reach us directly via WhatsApp.";
+    loadingEl.classList.remove('loading');
+  }
+}
+document.getElementById('chatSend').addEventListener('click', () => {
+  const input = document.getElementById('chatInput');
+  sendChat(input.value);
+  input.value = '';
+});
+document.getElementById('chatInput').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter'){
+    sendChat(e.target.value);
+    e.target.value = '';
+  }
+});
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => sendChat(chip.dataset.q));
+});
+
+/* ---------------- upload & match ---------------- */
+const uploadZone = document.getElementById('uploadZone');
+const fileInput = document.getElementById('fileInput');
+let uploadedBase64 = null, uploadedMediaType = null;
+
+uploadZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  if(!file) return;
+  uploadedMediaType = file.type;
+  const reader = new FileReader();
+  reader.onload = () => {
+    uploadedBase64 = reader.result.split(',')[1];
+    document.getElementById('previewImg').src = reader.result;
+    document.getElementById('previewRow').style.display = 'flex';
+    document.getElementById('matchResult').classList.remove('show');
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('analyzeBtn').addEventListener('click', async () => {
+  if(!uploadedBase64) return;
+  const btn = document.getElementById('analyzeBtn');
+  btn.textContent = 'Analyzing…';
+  try{
+    const raw = await callClaude([{
+      role:'user',
+      content:[
+        {type:'image', source:{type:'base64', media_type: uploadedMediaType, data: uploadedBase64}},
+        {type:'text', text:'Look at this inspiration image. Respond with ONLY raw JSON, no markdown fences, no preamble, in exactly this shape: {"silhouette":"...","fabric":"...","collection":"one of: Wedding Gowns, Ruracio & Traditional Wear, Ankara & Kitenge, Senator Suits & Menswear, Bridesmaid Dresses, Kaftans","tip":"one short styling tip"}'}
+      ]
+    }], "You are a lolo fashion stylist matching inspiration photos to LoLo Fashion House collections.");
+    const clean = raw.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(clean);
+    document.getElementById('mSilhouette').textContent = parsed.silhouette || '—';
+    document.getElementById('mFabric').textContent = parsed.fabric || '—';
+    document.getElementById('mCollection').textContent = parsed.collection || '—';
+    document.getElementById('mTip').textContent = parsed.tip || '—';
+    document.getElementById('matchResult').classList.add('show');
+    window.__lastMatch = parsed;
+  }catch(err){
+    document.getElementById('mSilhouette').textContent = 'Unavailable';
+    document.getElementById('mFabric').textContent = 'Unavailable';
+    document.getElementById('mCollection').textContent = 'Please try again';
+    document.getElementById('mTip').textContent = 'The concierge could not read this image just now.';
+    document.getElementById('matchResult').classList.add('show');
+  }finally{
+    btn.textContent = 'Analyze this design';
+  }
+});
+
+document.getElementById('useMatchBtn').addEventListener('click', () => {
+  const m = window.__lastMatch;
+  document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+  if(m){
+    const opts = ["Wedding Gown","Ruracio / Traditional Wear","Ankara / Kitenge","Senator Suit / Menswear","Bridesmaid Dresses","Kaftan"];
+    const sel = document.getElementById('fEvent');
+    const match = opts.find(o => (m.collection||'').toLowerCase().includes(o.split(' ')[0].toLowerCase()));
+    if(match) sel.value = match;
+    document.getElementById('fMessage').value = `Inspiration match — Silhouette: ${m.silhouette}. Fabric: ${m.fabric}. Styling note: ${m.tip}`;
+    document.getElementById('formNote').classList.add('show');
+  }
+});
+
+/* ---------------- insight ---------------- */
+const insightText = document.getElementById('insightText');
+const insightMeta = document.getElementById('insightMeta');
+const insightBtn = document.getElementById('insightBtn');
+const insightIcon = document.getElementById('insightIcon');
+const FALLBACK_INSIGHTS = [
+  "Ruracio season is trending soft gold and ivory accents this year — ask about our beaded overlay option.",
+  "Outdoor Nairobi weddings are favouring lighter crepe and chiffon gowns this season for easier movement in the heat.",
+  "Kaftans are moving from guest-wear to gifting — several brides are ordering matching sets for their mothers."
+];
+async function loadInsight(){
+  insightIcon.classList.add('spin');
+  insightText.textContent = "Loading today's style insight…";
+  try{
+    const raw = await callClaude([{role:'user', content:'Give me one short, specific style or trend insight (max 2 sentences) relevant to a Kenyan lolo fashion house that makes wedding gowns, ruracio wear, ankara, senator suits, bridesmaid dresses and kaftans. Make it feel like a fresh, useful update a client would want to know about. Return plain text only, no preamble.'}],
+      "You are a fashion trend analyst writing short client-facing insights for LoLo Fashion House.");
+    insightText.textContent = raw || FALLBACK_INSIGHTS[Math.floor(Math.random()*FALLBACK_INSIGHTS.length)];
+  }catch(err){
+    insightText.textContent = FALLBACK_INSIGHTS[Math.floor(Math.random()*FALLBACK_INSIGHTS.length)];
+  }finally{
+    insightIcon.classList.remove('spin');
+    insightMeta.textContent = "Updated " + new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+  }
+}
+insightBtn.addEventListener('click', loadInsight);
+loadInsight();
+
+/* ---------------- booking form ---------------- */
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('bookingForm').style.display = 'none';
+  document.getElementById('successPanel').classList.add('show');
+});
+
+/* ---------------- toast (new advancement prompt) ---------------- */
+setTimeout(() => {
+  document.getElementById('toast').classList.add('show');
+}, 3500);
+document.getElementById('toastDismiss').addEventListener('click', () => {
+  document.getElementById('toast').classList.remove('show');
+});
+document.getElementById('toastGo').addEventListener('click', () => {
+  document.getElementById('toast').classList.remove('show');
+  document.getElementById('concierge').scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>
